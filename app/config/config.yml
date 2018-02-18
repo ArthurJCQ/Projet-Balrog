@@ -81,3 +81,11 @@ sonata_block:
             contexts: [admin]
 
         # ...        
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: BalrogBundle\Entity\User
+    from_email:
+        address: "balrog@balrog.fr"
+        sender_name: "Balrog"
