@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hero</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hero.id }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ hero.level }}</td>
+            </tr>
+            <tr>
+                <th>Pv</th>
+                <td>{{ hero.pv }}</td>
+            </tr>
+            <tr>
+                <th>Strength</th>
+                <td>{{ hero.strength }}</td>
+            </tr>
+            <tr>
+                <th>Agility</th>
+                <td>{{ hero.agility }}</td>
+            </tr>
+            <tr>
+                <th>Intelligence</th>
+                <td>{{ hero.intelligence }}</td>
+            </tr>
+            <tr>
+                <th>Chance</th>
+                <td>{{ hero.chance }}</td>
+            </tr>
+            <tr>
+                <th>Damage</th>
+                <td>{{ hero.damage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hero_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('hero_edit', { 'id': hero.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

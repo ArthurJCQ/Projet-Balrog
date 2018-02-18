@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Heroes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Level</th>
+                <th>Pv</th>
+                <th>Strength</th>
+                <th>Agility</th>
+                <th>Intelligence</th>
+                <th>Chance</th>
+                <th>Damage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hero in heroes %}
+            <tr>
+                <td><a href="{{ path('hero_show', { 'id': hero.id }) }}">{{ hero.id }}</a></td>
+                <td>{{ hero.level }}</td>
+                <td>{{ hero.pv }}</td>
+                <td>{{ hero.strength }}</td>
+                <td>{{ hero.agility }}</td>
+                <td>{{ hero.intelligence }}</td>
+                <td>{{ hero.chance }}</td>
+                <td>{{ hero.damage }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hero_show', { 'id': hero.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hero_edit', { 'id': hero.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hero_new') }}">Create a new hero</a>
+        </li>
+    </ul>
+{% endblock %}
