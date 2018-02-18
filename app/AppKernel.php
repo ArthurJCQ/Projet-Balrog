@@ -21,10 +21,16 @@ class AppKernel extends Kernel
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             // And finally
             new Sonata\AdminBundle\SonataAdminBundle(),
+            //The new bundle Application
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             // FOS User Bundle
-            new FOS\UserBundle\FOSUserBundle()
+            new FOS\UserBundle\FOSUserBundle(),
+            // Pour que Sonata et FOS marchent ensemble
+            new Sonata\UserBundle\SonataUserBundle()
 
         ];
 

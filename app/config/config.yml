@@ -32,7 +32,7 @@ framework:
     php_errors:
         log: true
     
-    translator: { fallbacks: ["%locale%"] }
+    translator: { fallbacks: [en] }
 
     templating:
             engines: ['twig']
@@ -52,6 +52,8 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
@@ -60,9 +62,12 @@ doctrine:
         #path: '%database_path%'
 
     orm:
-        auto_generate_proxy_classes: '%kernel.debug%'
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        entity_managers:
+            default:
+                mappings:
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
+                    ApplicationSonataUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -80,12 +85,32 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
-        # ...        
+        # ...
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+
+    class:
+        user: Application\Sonata\UserBundle\Entity\User
+        group: Application\Sonata\UserBundle\Entity\Group
+
+
+sonata_admin:
+    security:
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: BalrogBundle\Entity\User
+    user_class: Application\Sonata\UserBundle\Entity\User
+    
+    group:
+        group_class: Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+
     from_email:
         address: "balrog@balrog.fr"
         sender_name: "Balrog"
+

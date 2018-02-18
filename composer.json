@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
-            "BalrogBundle\\": "src/BalrogBundle"
+            "BalrogBundle\\": "src/BalrogBundle",
+            "Application\\": "src/Application"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
@@ -25,6 +26,8 @@
         "sonata-project/admin-bundle": "^3.23",
         "sonata-project/block-bundle": "^3.4",
         "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "sonata-project/easy-extends-bundle": "^2.2",
+        "sonata-project/user-bundle": "^4.1",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.6.4",
@@ -53,7 +56,6 @@
     },
     "config": {
         "platform": {
-            "php": "5.5.9"
         },
         "sort-packages": true
     },
