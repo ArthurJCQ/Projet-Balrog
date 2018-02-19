@@ -24,20 +24,13 @@ class Weapon extends Equipment
     /**
      * @var int
      *
-     * @ORM\Column(name="damage", type="integer")
+     * @ORM\Column(name="damages", type="integer")
      */
-    private $damage;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="class", type="string", length=255)
-     */
-    private $class;
+    private $damages;
 
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -47,51 +40,26 @@ class Weapon extends Equipment
     }
 
     /**
-     * Set damage
+     * Set damages.
      *
-     * @param integer $damage
+     * @param int $damages
      *
      * @return Weapon
      */
-    public function setDamage($damage)
+    public function setDamages($damages)
     {
-        $this->damage = $damage;
+        $this->damages = $damages;
 
         return $this;
     }
 
     /**
-     * Get damage
+     * Get damages.
      *
      * @return int
      */
-    public function getDamage()
+    public function getDamages()
     {
-        return $this->damage;
-    }
-
-    /**
-     * Set class
-     *
-     * @param string $class
-     *
-     * @return Weapon
-     */
-    public function setClass($class)
-    {
-        $this->class = $class;
-
-        return $this;
-    }
-
-    /**
-     * Get class
-     *
-     * @return string
-     */
-    public function getClass()
-    {
-        return $this->class;
+        return $this->damages;
     }
 }
-

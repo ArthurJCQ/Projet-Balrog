@@ -3,6 +3,7 @@
 namespace BalrogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Level
@@ -28,9 +29,32 @@ class Level
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Monster", mappedBy="level")
+     */
+    private $monsters;
 
     /**
-     * Get id
+     * @ORM\OneToMany(targetEntity="Round", mappedBy="level")
+     */
+    private $rounds;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Equipment", mappedBy="level")
+     */
+    private $equipments;
+
+
+
+    public function __construct()
+    {
+        $this->monsters = new ArrayCollection();
+        $this->rounds = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
+    }
+
+    /**
+     * Get id.
      *
      * @return int
      */
@@ -40,7 +64,7 @@ class Level
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -54,7 +78,7 @@ class Level
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -63,4 +87,3 @@ class Level
         return $this->name;
     }
 }
-

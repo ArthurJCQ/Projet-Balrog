@@ -3,6 +3,7 @@
 namespace BalrogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Application\Sonata\UserBundle\Entity\User as User;
 
 /**
  * Hero
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="hero")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\HeroRepository")
  */
-class Hero extends Personnage
+class Hero
 {
     /**
      * @var int
@@ -22,6 +23,12 @@ class Hero extends Personnage
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="heros")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="level", type="integer")
@@ -31,9 +38,9 @@ class Hero extends Personnage
     /**
      * @var int
      *
-     * @ORM\Column(name="pv", type="integer")
+     * @ORM\Column(name="health", type="integer")
      */
-    private $pv;
+    private $health;
 
     /**
      * @var int
@@ -66,13 +73,13 @@ class Hero extends Personnage
     /**
      * @var int
      *
-     * @ORM\Column(name="damage", type="integer")
+     * @ORM\Column(name="damages", type="integer")
      */
-    private $damage;
+    private $damages;
 
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -82,9 +89,9 @@ class Hero extends Personnage
     }
 
     /**
-     * Set level
+     * Set level.
      *
-     * @param integer $level
+     * @param int $level
      *
      * @return Hero
      */
@@ -96,7 +103,7 @@ class Hero extends Personnage
     }
 
     /**
-     * Get level
+     * Get level.
      *
      * @return int
      */
@@ -106,33 +113,33 @@ class Hero extends Personnage
     }
 
     /**
-     * Set pv
+     * Set health.
      *
-     * @param integer $pv
+     * @param int $health
      *
      * @return Hero
      */
-    public function setPv($pv)
+    public function setHealth($health)
     {
-        $this->pv = $pv;
+        $this->health = $health;
 
         return $this;
     }
 
     /**
-     * Get pv
+     * Get health.
      *
      * @return int
      */
-    public function getPv()
+    public function getHealth()
     {
-        return $this->pv;
+        return $this->health;
     }
 
     /**
-     * Set strength
+     * Set strength.
      *
-     * @param integer $strength
+     * @param int $strength
      *
      * @return Hero
      */
@@ -144,7 +151,7 @@ class Hero extends Personnage
     }
 
     /**
-     * Get strength
+     * Get strength.
      *
      * @return int
      */
@@ -154,9 +161,9 @@ class Hero extends Personnage
     }
 
     /**
-     * Set agility
+     * Set agility.
      *
-     * @param integer $agility
+     * @param int $agility
      *
      * @return Hero
      */
@@ -168,7 +175,7 @@ class Hero extends Personnage
     }
 
     /**
-     * Get agility
+     * Get agility.
      *
      * @return int
      */
@@ -178,9 +185,9 @@ class Hero extends Personnage
     }
 
     /**
-     * Set intelligence
+     * Set intelligence.
      *
-     * @param integer $intelligence
+     * @param int $intelligence
      *
      * @return Hero
      */
@@ -192,7 +199,7 @@ class Hero extends Personnage
     }
 
     /**
-     * Get intelligence
+     * Get intelligence.
      *
      * @return int
      */
@@ -202,9 +209,9 @@ class Hero extends Personnage
     }
 
     /**
-     * Set chance
+     * Set chance.
      *
-     * @param integer $chance
+     * @param int $chance
      *
      * @return Hero
      */
@@ -216,7 +223,7 @@ class Hero extends Personnage
     }
 
     /**
-     * Get chance
+     * Get chance.
      *
      * @return int
      */
@@ -226,27 +233,26 @@ class Hero extends Personnage
     }
 
     /**
-     * Set damage
+     * Set damages.
      *
-     * @param integer $damage
+     * @param int $damages
      *
      * @return Hero
      */
-    public function setDamage($damage)
+    public function setDamages($damages)
     {
-        $this->damage = $damage;
+        $this->damages = $damages;
 
         return $this;
     }
 
     /**
-     * Get damage
+     * Get damages.
      *
      * @return int
      */
-    public function getDamage()
+    public function getDamages()
     {
-        return $this->damage;
+        return $this->damages;
     }
 }
-

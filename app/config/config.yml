@@ -65,6 +65,7 @@ doctrine:
         entity_managers:
             default:
                 mappings:
+                    BalrogBundle : ~
                     SonataUserBundle: ~
                     FOSUserBundle: ~
                     ApplicationSonataUserBundle: ~

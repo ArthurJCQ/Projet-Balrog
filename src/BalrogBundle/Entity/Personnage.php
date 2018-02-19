@@ -28,9 +28,15 @@ class Personnage
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Round", inversedBy="personnages")
+     * @ORM\JoinColumn(name="round_id", referencedColumnName="id")
+     */
+    private $Round;
+
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -40,7 +46,7 @@ class Personnage
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -54,7 +60,7 @@ class Personnage
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -63,4 +69,3 @@ class Personnage
         return $this->name;
     }
 }
-

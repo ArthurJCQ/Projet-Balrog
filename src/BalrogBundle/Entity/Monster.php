@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="monster")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\MonsterRepository")
  */
-class Monster extends Personnage
+class Monster
 {
     /**
      * @var int
@@ -24,20 +24,26 @@ class Monster extends Personnage
     /**
      * @var int
      *
-     * @ORM\Column(name="damage", type="integer")
+     * @ORM\Column(name="damages", type="integer")
      */
-    private $damage;
+    private $damages;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="pv", type="integer")
+     * @ORM\Column(name="health", type="integer")
      */
-    private $pv;
+    private $health;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Level", inversedBy="monsters")
+     * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
+     */
+    private $level;
 
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -47,51 +53,50 @@ class Monster extends Personnage
     }
 
     /**
-     * Set damage
+     * Set damages.
      *
-     * @param integer $damage
+     * @param int $damages
      *
      * @return Monster
      */
-    public function setDamage($damage)
+    public function setDamages($damages)
     {
-        $this->damage = $damage;
+        $this->damages = $damages;
 
         return $this;
     }
 
     /**
-     * Get damage
+     * Get damages.
      *
      * @return int
      */
-    public function getDamage()
+    public function getDamages()
     {
-        return $this->damage;
+        return $this->damages;
     }
 
     /**
-     * Set pv
+     * Set health.
      *
-     * @param integer $pv
+     * @param int $health
      *
      * @return Monster
      */
-    public function setPv($pv)
+    public function setHealth($health)
     {
-        $this->pv = $pv;
+        $this->health = $health;
 
         return $this;
     }
 
     /**
-     * Get pv
+     * Get health.
      *
      * @return int
      */
-    public function getPv()
+    public function getHealth()
     {
-        return $this->pv;
+        return $this->health;
     }
 }
-

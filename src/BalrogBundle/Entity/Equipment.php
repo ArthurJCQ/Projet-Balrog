@@ -26,18 +26,24 @@ class Equipment
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rareness", type="string", length=255)
      */
-    private $rareness;
+    protected $rareness;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Level", inversedBy="equipments")
+     * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
+     */
+    private $level;
 
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -47,7 +53,7 @@ class Equipment
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -61,7 +67,7 @@ class Equipment
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -71,7 +77,7 @@ class Equipment
     }
 
     /**
-     * Set rareness
+     * Set rareness.
      *
      * @param string $rareness
      *
@@ -85,7 +91,7 @@ class Equipment
     }
 
     /**
-     * Get rareness
+     * Get rareness.
      *
      * @return string
      */
@@ -94,4 +100,3 @@ class Equipment
         return $this->rareness;
     }
 }
-
