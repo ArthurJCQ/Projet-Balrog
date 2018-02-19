@@ -10,7 +10,7 @@ class MonsterAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('id', 'text');
+        $formMapper->add('name', 'text');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

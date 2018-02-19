@@ -6,33 +6,24 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Personnage
- *
- * @ORM\Table(name="personnage")
- * @ORM\Entity(repositoryClass="BalrogBundle\Repository\PersonnageRepository")
  */
-class Personnage
+
+ /** @ORM\MappedSuperclass */
+ abstract class Personnage
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="Round", inversedBy="personnages")
      * @ORM\JoinColumn(name="round_id", referencedColumnName="id")
      */
-    private $Round;
+    protected $Round;
 
 
     /**

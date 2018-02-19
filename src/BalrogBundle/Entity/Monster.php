@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="monster")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\MonsterRepository")
  */
-class Monster
+class Monster extends Personnage
 {
     /**
      * @var int

@@ -11,7 +11,7 @@ use Application\Sonata\UserBundle\Entity\User as User;
  * @ORM\Table(name="hero")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\HeroRepository")
  */
-class Hero
+class Hero extends Personnage
 {
     /**
      * @var int
