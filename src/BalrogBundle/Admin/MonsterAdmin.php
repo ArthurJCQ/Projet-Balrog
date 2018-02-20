@@ -16,10 +16,8 @@ class MonsterAdmin extends AbstractAdmin
         ->add('health', 'integer')
         ->add('damages', 'integer')
         ->add('attackName', 'text')
-        ->add('level', ModelType::class, [
-                        'required' => false,
-                        'expanded' => true,
-                        'multiple' => true,
+        ->add('level', 'sonata_type_model_list', [
+                        'required' => false
                     ]);
         //->add('level', 'text');
     }

@@ -10,6 +10,7 @@ use Application\Sonata\UserBundle\Entity\User as User;
  *
  * @ORM\Table(name="hero")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\HeroRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Hero extends Personnage
 {
@@ -28,6 +29,7 @@ class Hero extends Personnage
      * @ORM\Column(name="heroClass", type="string", length=255)
      */
     private $classe;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
@@ -85,30 +87,40 @@ class Hero extends Personnage
     private $damages;
 
 
-    /*public function __construct($classe)
+    public function __construct()
+    {
+        
+    }
+
+    /**
+     * Crée la classe du héro instancié
+     * @param [string] $classe [classe du personnage]
+     * @ORM\PrePersist
+     */
+    public function setClass()
     {
         $classeArray = [
-            'Guerrier' => new Guerrier(),
-            'Archer' => new Archer(),
-            'Mage' => new Mage(),
-            'Voleur' => new Voleur()
+            'Guerrier' => new Guerrier,
+            'Archer' => new Archer,
+            'Mage' => new Mage,
+            'Voleur' => new Voleur
         ];
 
-        $this->classe = classe;
+        $heroClasse = $classeArray[$this->classe];
 
-        $heroClasse = $classeArray[$classe];
+        $carac = $heroClasse->setCarac();
 
-        $carac = $heroClasse.setCarac();
+        $calcDam = $heroClasse->calculDamages();
 
         $this->strength = $carac['strength'];
         $this->intelligence = $carac['intelligence'];
         $this->chance = $carac['chance'];
         $this->agility = $carac['agility'];
         $this->health = $carac['health'];
+        $this->level = 1;
+        $this->damages = $calcDam;
     }
-*/
-
-    /**
+     /**
      * Get id.
      *
      * @return int
@@ -314,5 +326,25 @@ class Hero extends Personnage
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * @param string $classe
+     *
+     * @return self
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
     }
 }

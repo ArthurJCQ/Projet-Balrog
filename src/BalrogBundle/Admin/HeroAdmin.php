@@ -13,8 +13,7 @@ class HeroAdmin extends AbstractAdmin
         $formMapper
         ->add('user', 'sonata_type_model_list', array())
         ->add('name', 'text')
-        ->add('damages', 'integer')
-        ->add('health', 'integer');
+        ->add('classe', 'text');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -24,6 +23,12 @@ class HeroAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('id');
+        $listMapper
+        ->addIdentifier('id')
+        ->addIdentifier('name')
+        ->addIdentifier('classe')
+        ->addIdentifier('level')
+        ->addIdentifier('user');
     }
+
 }
