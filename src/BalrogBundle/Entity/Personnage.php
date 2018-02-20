@@ -17,10 +17,10 @@ use Doctrine\ORM\Mapping as ORM;
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $name;
+    protected $name = "Character";
 
     /**
-     * @ORM\ManyToOne(targetEntity="Round", inversedBy="personnages")
+     * @ORM\ManyToOne(targetEntity="Round")
      * @ORM\JoinColumn(name="round_id", referencedColumnName="id")
      */
     protected $Round;
@@ -59,4 +59,29 @@ use Doctrine\ORM\Mapping as ORM;
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRound()
+    {
+        return $this->Round;
+    }
+
+    /**
+     * @param mixed $Round
+     *
+     * @return self
+     */
+    public function setRound($Round)
+    {
+        $this->Round = $Round;
+
+        return $this;
+    }
+
+    /*public function __toString()
+    {
+        return $this->name;
+    }*/
 }

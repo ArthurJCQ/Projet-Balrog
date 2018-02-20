@@ -23,10 +23,17 @@ class Hero extends Personnage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="heros")
+     * @var string
+     * 
+     * @ORM\Column(name="heroClass", type="string", length=255)
+     */
+    private $classe;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
+    private $user;  
 
     /**
      * @var int
@@ -77,6 +84,29 @@ class Hero extends Personnage
      */
     private $damages;
 
+
+    /*public function __construct($classe)
+    {
+        $classeArray = [
+            'Guerrier' => new Guerrier(),
+            'Archer' => new Archer(),
+            'Mage' => new Mage(),
+            'Voleur' => new Voleur()
+        ];
+
+        $this->classe = classe;
+
+        $heroClasse = $classeArray[$classe];
+
+        $carac = $heroClasse.setCarac();
+
+        $this->strength = $carac['strength'];
+        $this->intelligence = $carac['intelligence'];
+        $this->chance = $carac['chance'];
+        $this->agility = $carac['agility'];
+        $this->health = $carac['health'];
+    }
+*/
 
     /**
      * Get id.
@@ -254,5 +284,35 @@ class Hero extends Personnage
     public function getDamages()
     {
         return $this->damages;
+    }
+
+    /*public function __toString()
+    {
+        parent::__toString();
+    }*/
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
