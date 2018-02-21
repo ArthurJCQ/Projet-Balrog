@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Mage extends Classe
 {
-	protected $strength = 4, $agility = 9, $chance = 5, $intelligence = 6, $health = 40;
+	protected $strength = 4, $agility = 5, $chance = 6, $intelligence = 9, $health = 30;
 
 	public function setCarac()
 	{

@@ -100,10 +100,10 @@ class Equipment
         return $this->rareness;
     }
 
-    /*public function __toString()
+    public function __toString()
     {
         return $this->name;
-    }*/
+    }
 
     /**
      * @return mixed

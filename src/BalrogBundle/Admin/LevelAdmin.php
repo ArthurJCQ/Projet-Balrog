@@ -12,18 +12,24 @@ class LevelAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-        ->add('name', 'text')
-        ->add('difficulty', 'integer')
-        ->add('monsters', ModelType::class, [
-                        'required' => false,
-                        'expanded' => true,
-                        'multiple' => true,
-                    ])
-        ->add('equipments', ModelType::class, [
-                        'required' => false,
-                        'expanded' => true,
-                        'multiple' => true,
-                    ]);
+        ->with('Level', ['class' => 'col-md-12'])
+            ->add('name', 'text')
+            ->add('difficulty', 'integer')
+        ->end()
+        ->with('Monstres', ['class' => 'col-md-6'])
+            ->add('monsters', 'sonata_type_model', [
+                            'required' => false,
+                            'expanded' => true,
+                            'multiple' => true,
+                        ])
+        ->end()
+        ->with('Equipements', ['class' => 'col-md-6'])
+            ->add('equipments', ModelType::class, [
+                            'required' => false,
+                            'expanded' => true,
+                            'multiple' => true,
+                        ])
+        ->end();
         // ->add('monsters', 'text');
     }
 

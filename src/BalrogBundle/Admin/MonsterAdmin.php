@@ -12,13 +12,19 @@ class MonsterAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-        ->add('name', 'text')
-        ->add('health', 'integer')
-        ->add('damages', 'integer')
-        ->add('attackName', 'text')
-        ->add('level', 'sonata_type_model_list', [
-                        'required' => false
-                    ]);
+            ->with('Monster', ['class' => 'col-md-9'])
+                ->add('name', 'text')
+                ->add('health', 'integer')
+                ->add('damages', 'integer')
+                ->add('attackName', 'text')
+            ->end()
+            ->with('Level', ['class' => 'col-md-3'])
+                ->add('level', ModelType::class, [
+                            'required' => false,
+                            'expanded' => true,
+                            'multiple' => false,
+                        ])
+            ->end();
         //->add('level', 'text');
     }
 
@@ -32,6 +38,10 @@ class MonsterAdmin extends AbstractAdmin
     {
         $listMapper
         ->addIdentifier('id')
-        ->addIdentifier('health');
+        ->addIdentifier('name')
+        ->addIdentifier('attackName')
+        ->addIdentifier('damages')
+        ->addIdentifier('health')
+        ->addIdentifier('level');
     }
 }
