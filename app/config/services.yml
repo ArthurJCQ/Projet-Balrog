@@ -39,26 +39,26 @@ services:
         class: BalrogBundle\Admin\LevelAdmin
         arguments: [~, BalrogBundle\Entity\Level, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Level, group: 'Jeu - Balrog' }
+            - { name: sonata.admin, manager_type: orm, label: Level, group: 'Game - Balrog' }
         public: true
 
     admin.monster:
         class: BalrogBundle\Admin\MonsterAdmin
         arguments: [~, BalrogBundle\Entity\Monster, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Monster, group: 'Jeu - Balrog' }
+            - { name: sonata.admin, manager_type: orm, label: Monster, group: 'Game - Balrog' }
         public: true
 
     admin.equipment:
         class: BalrogBundle\Admin\EquipmentAdmin
         arguments: [~, BalrogBundle\Entity\Equipment, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Equipment, group: 'Jeu - Balrog' }
+            - { name: sonata.admin, manager_type: orm, label: Equipment, group: 'Game - Balrog' }
         public: true
 
     admin.hero:
         class: BalrogBundle\Admin\HeroAdmin
         arguments: [~, BalrogBundle\Entity\Hero, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Hero, group: 'Jeu - Balrog' }
+            - { name: sonata.admin, manager_type: orm, label: Hero, group: 'Game - Balrog' }
         public: true

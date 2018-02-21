@@ -23,16 +23,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="BalrogBundle\Entity\Hero", mappedBy="user")
-     */
-    private $heros;
-
-    public function __construct()
-    {
-        $this->heros = new ArrayCollection();
-    }
-
-    /**
      * Get id.
      *
      * @return int $id

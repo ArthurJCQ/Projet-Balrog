@@ -26,7 +26,7 @@ class Equipment
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $name;
+    protected $name = "Equipement";
 
     /**
      * @var string
@@ -98,5 +98,30 @@ class Equipment
     public function getRareness()
     {
         return $this->rareness;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param mixed $level
+     *
+     * @return self
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
     }
 }

@@ -10,6 +10,7 @@ use Application\Sonata\UserBundle\Entity\User as User;
  *
  * @ORM\Table(name="hero")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\HeroRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Hero extends Personnage
 {
@@ -23,10 +24,18 @@ class Hero extends Personnage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="heros")
+     * @var string
+     * 
+     * @ORM\Column(name="heroClass", type="string", length=255)
+     */
+    private $classe;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
+    private $user;  
 
     /**
      * @var int
@@ -78,7 +87,40 @@ class Hero extends Personnage
     private $damages;
 
 
+    public function __construct()
+    {
+        
+    }
+
     /**
+     * Crée la classe du héro instancié
+     * @param [string] $classe [classe du personnage]
+     * @ORM\PrePersist
+     */
+    public function setClass()
+    {
+        $classeArray = [
+            'Guerrier' => new Guerrier,
+            'Archer' => new Archer,
+            'Mage' => new Mage,
+            'Voleur' => new Voleur
+        ];
+
+        $heroClasse = $classeArray[$this->classe];
+
+        $carac = $heroClasse->setCarac();
+
+        $calcDam = $heroClasse->calculDamages();
+
+        $this->strength = $carac['strength'];
+        $this->intelligence = $carac['intelligence'];
+        $this->chance = $carac['chance'];
+        $this->agility = $carac['agility'];
+        $this->health = $carac['health'];
+        $this->level = 1;
+        $this->damages = $calcDam;
+    }
+     /**
      * Get id.
      *
      * @return int
@@ -254,5 +296,55 @@ class Hero extends Personnage
     public function getDamages()
     {
         return $this->damages;
+    }
+
+    /*public function __toString()
+    {
+        parent::__toString();
+    }*/
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * @param string $classe
+     *
+     * @return self
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+
+        return $this;
     }
 }

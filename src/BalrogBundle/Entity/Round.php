@@ -3,7 +3,6 @@
 namespace BalrogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Round
@@ -22,10 +21,6 @@ class Round
      */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Personnage", mappedBy="round")
-     */
-    private $personnages;
 
     /**
      * @ORM\ManyToOne(targetEntity="Level", inversedBy="rounds")
@@ -33,12 +28,6 @@ class Round
      */
     private $level;
 
-
-
-    public function __construct()
-    {
-        $this->personnages = new ArrayCollection();
-    }
 
     /**
      * Get id.
