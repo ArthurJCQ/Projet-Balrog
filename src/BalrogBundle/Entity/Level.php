@@ -30,6 +30,14 @@ class Level
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="difficulty", type="integer")
+     */
+    private $difficulty;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="Monster", mappedBy="level")
      */
     private $monsters;
@@ -85,5 +93,90 @@ class Level
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDifficulty()
+    {
+        return $this->difficulty;
+    }
+
+    /**
+     * @param int $difficulty
+     *
+     * @return self
+     */
+    public function setDifficulty($difficulty)
+    {
+        $this->difficulty = $difficulty;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonsters()
+    {
+        return $this->monsters;
+    }
+
+    /**
+     * @param mixed $monsters
+     *
+     * @return self
+     */
+    public function setMonsters($monsters)
+    {
+        $this->monsters[] = $monsters;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRounds()
+    {
+        return $this->rounds;
+    }
+
+    /**
+     * @param mixed $rounds
+     *
+     * @return self
+     */
+    public function setRounds($rounds)
+    {
+        $this->rounds[] = $rounds;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipments()
+    {
+        return $this->equipments;
+    }
+
+    /**
+     * @param mixed $equipments
+     *
+     * @return self
+     */
+    public function setEquipments($equipments)
+    {
+        $this->equipments[] = $equipments;
+
+        return $this;
     }
 }
