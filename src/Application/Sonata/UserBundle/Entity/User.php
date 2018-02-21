@@ -5,6 +5,7 @@ namespace Application\Sonata\UserBundle\Entity;
 use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use BalrogBundle\Entity\Hero as Hero;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
