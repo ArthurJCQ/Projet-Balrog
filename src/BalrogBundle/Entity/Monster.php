@@ -29,6 +29,13 @@ class Monster extends Personnage
     private $damages;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="attackName", type="string", length=255)
+     */
+    private $attackName;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="health", type="integer")
@@ -98,5 +105,51 @@ class Monster extends Personnage
     public function getHealth()
     {
         return $this->health;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param mixed $level
+     *
+     * @return self
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAttackName()
+    {
+        return $this->attackName;
+    }
+
+    /**
+     * @param string $attackName
+     *
+     * @return self
+     */
+    public function setAttackName($attackName)
+    {
+        $this->attackName = $attackName;
+
+        return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
