@@ -119,6 +119,7 @@ class Hero extends Personnage
         $this->health = $carac['health'];
         $this->level = 1;
         $this->damages = $calcDam;
+
     }
      /**
      * Get id.

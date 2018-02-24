@@ -1,56 +1,90 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Hero</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ hero.id }}</td>
-            </tr>
-            <tr>
-                <th>Level</th>
-                <td>{{ hero.level }}</td>
-            </tr>
-            <tr>
-                <th>Pv</th>
-                <td>{{ hero.pv }}</td>
-            </tr>
-            <tr>
-                <th>Strength</th>
-                <td>{{ hero.strength }}</td>
-            </tr>
-            <tr>
-                <th>Agility</th>
-                <td>{{ hero.agility }}</td>
-            </tr>
-            <tr>
-                <th>Intelligence</th>
-                <td>{{ hero.intelligence }}</td>
-            </tr>
-            <tr>
-                <th>Chance</th>
-                <td>{{ hero.chance }}</td>
-            </tr>
-            <tr>
-                <th>Damage</th>
-                <td>{{ hero.damage }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container-fluid padding-top" >
 
-    <ul>
-        <li>
-            <a href="{{ path('hero_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('hero_edit', { 'id': hero.id }) }}">Edit</a>
-        </li>
-        <li>
+
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-2">
+            <h1>Hero</h1>
+        </div>
+        <div class="col-lg-5">
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-lg-4">
+        </div>
+
+        <div class="col-lg-4">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>#{{ hero.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ hero.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Classe</th>
+                        <td>{{ hero.classe }}</td>
+                    </tr>
+                    <tr>
+                        <th>Level</th>
+                        <td>{{ hero.level }}</td>
+                    </tr>
+                    <tr>
+                        <th>Health</th>
+                        <td>{{ hero.health }}</td>
+                    </tr>
+                    <tr>
+                        <th>Strength</th>
+                        <td>{{ hero.strength }}</td>
+                    </tr>
+                    <tr>
+                        <th>Agility</th>
+                        <td>{{ hero.agility }}</td>
+                    </tr>
+                    <tr>
+                        <th>Intelligence</th>
+                        <td>{{ hero.intelligence }}</td>
+                    </tr>
+                    <tr>
+                        <th>Chance</th>
+                        <td>{{ hero.chance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Damages</th>
+                        <td>{{ hero.damages }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2">
+            <a class="btn btn-outline-dark" href="{{ path('hero_index') }}">Back to the list</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-3">
+            <a class="btn btn-outline-dark" href="{{ path('hero_edit', { 'id': hero.id }) }}">Edit</a>
+        </div>
+        <div class="col-lg-1">
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input class="btn btn-outline-dark" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}

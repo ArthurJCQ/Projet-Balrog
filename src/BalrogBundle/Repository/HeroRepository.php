@@ -10,4 +10,7 @@ namespace BalrogBundle\Repository;
  */
 class HeroRepository extends \Doctrine\ORM\EntityRepository
 {
-}
+    public function InsertId($username,$id){
+        $conn = $this->getEntityManager()->getConnection();
+        $conn->update('hero', array('user_id' => $username), array('id' => $id));
+    }}
