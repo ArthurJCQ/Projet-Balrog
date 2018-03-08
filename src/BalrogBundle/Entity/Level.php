@@ -38,7 +38,7 @@ class Level
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Monster", mappedBy="level")
+     * @ORM\OneToMany(targetEntity="Monster", mappedBy="level", cascade={"all"})
      */
     private $monsters;
 
@@ -48,7 +48,7 @@ class Level
     private $rounds;
 
     /**
-     * @ORM\OneToMany(targetEntity="Equipment", mappedBy="level")
+     * @ORM\OneToMany(targetEntity="Equipment", mappedBy="level", cascade={"all"})
      */
     private $equipments;
 
@@ -178,5 +178,104 @@ class Level
         $this->equipments[] = $equipments;
 
         return $this;
+    }
+
+    /**
+     * Add monster.
+     *
+     * @param \BalrogBundle\Entity\Monster $monster
+     *
+     * @return Level
+     */
+    public function addMonster(\BalrogBundle\Entity\Monster $monster)
+    {
+        $this->monsters[] = $monster;
+
+        return $this;
+    }
+
+    /**
+     * Remove monster.
+     *
+     * @param \BalrogBundle\Entity\Monster $monster
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMonster(\BalrogBundle\Entity\Monster $monster)
+    {
+        return $this->monsters->removeElement($monster);
+    }
+
+    /**
+     * Add round.
+     *
+     * @param \BalrogBundle\Entity\Round $round
+     *
+     * @return Level
+     */
+    public function addRound(\BalrogBundle\Entity\Round $round)
+    {
+        $this->rounds[] = $round;
+
+        return $this;
+    }
+
+    /**
+     * Remove round.
+     *
+     * @param \BalrogBundle\Entity\Round $round
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeRound(\BalrogBundle\Entity\Round $round)
+    {
+        return $this->rounds->removeElement($round);
+    }
+
+    /**
+     * Add equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment $equipment
+     *
+     * @return Level
+     */
+    public function addEquipment(\BalrogBundle\Entity\Equipment $equipment)
+    {
+        dump("e");die();
+        $equipment->setLevel($this);
+        $this->equipments[] = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment $equipment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeEquipment(\BalrogBundle\Entity\Equipment $equipment)
+    {
+        return $this->equipments->removeElement($equipment);
+    }
+
+    /**
+     * 
+     * @ORM\PrePersist
+     */
+    public function prePersist($level)
+    {
+        dump($level);die();
+        $this->preUpdate($level);
+    }
+
+    /**
+     * 
+     * 
+     */
+    public function preUpdate($level)
+    {
+        $level->setEquipments($level->getEquipments());
     }
 }

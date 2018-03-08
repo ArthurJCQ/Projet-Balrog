@@ -13,11 +13,14 @@ class LevelAdmin extends AbstractAdmin
     {
         $formMapper
         ->with('Level', ['class' => 'col-md-12'])
+            ->add('id', 'integer', array(
+                'disabled' => true
+            ))
             ->add('name', 'text')
             ->add('difficulty', 'integer')
         ->end()
         ->with('Monstres', ['class' => 'col-md-6'])
-            ->add('monsters', 'sonata_type_model', [
+            ->add('monsters', ModelType::class, [
                             'required' => false,
                             'expanded' => true,
                             'multiple' => true,
