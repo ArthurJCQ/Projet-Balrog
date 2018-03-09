@@ -123,6 +123,8 @@ class Hero extends Personnage
 
         $carac = $heroClasse->setCarac();
 
+        // dump($carac);die();
+
         $calcDam = $heroClasse->calculDamages();
 
         $this->strength = $carac['strength'];
