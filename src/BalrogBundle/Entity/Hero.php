@@ -3,6 +3,7 @@
 namespace BalrogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Application\Sonata\UserBundle\Entity\User as User;
 
 /**
@@ -43,6 +44,13 @@ class Hero extends Personnage
      * @ORM\Column(name="level", type="integer")
      */
     private $level;
+
+    /**
+     * @var Inventaire Collection
+     * 
+     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="heroId")
+     */
+    private $inventories;
 
     /**
      * @var int
@@ -86,10 +94,17 @@ class Hero extends Personnage
      */
     private $damages;
 
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
 
     public function __construct()
     {
-        
+        $this->inventories = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
     }
 
     /**
@@ -110,6 +125,8 @@ class Hero extends Personnage
 
         $carac = $heroClasse->setCarac();
 
+        // dump($carac);die();
+
         $calcDam = $heroClasse->calculDamages();
 
         $this->strength = $carac['strength'];
@@ -117,6 +134,7 @@ class Hero extends Personnage
         $this->chance = $carac['chance'];
         $this->agility = $carac['agility'];
         $this->health = $carac['health'];
+        $this->image = $carac['image'];
         $this->level = 1;
         $this->damages = $calcDam;
 
@@ -347,5 +365,101 @@ class Hero extends Personnage
         $this->classe = $classe;
 
         return $this;
+    }
+
+    /**
+     * Set image.
+     *
+     * @param string $image
+     *
+     * @return Hero
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image.
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Add equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment $equipment
+     *
+     * @return Hero
+     */
+    public function addEquipment(\BalrogBundle\Entity\Equipment $equipment)
+    {
+        $this->equipments[] = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment $equipment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeEquipment(\BalrogBundle\Entity\Equipment $equipment)
+    {
+        return $this->equipments->removeElement($equipment);
+    }
+
+    /**
+     * Get equipments.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEquipments()
+    {
+        return $this->equipments;
+    }
+
+    /**
+     * Add inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return Hero
+     */
+    public function addInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        $this->inventories[] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Remove inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        return $this->inventories->removeElement($inventory);
+    }
+
+    /**
+     * Get inventories.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInventories()
+    {
+        return $this->inventories;
     }
 }
