@@ -2,6 +2,8 @@
 namespace BalrogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -13,6 +15,9 @@ class HeroAdmin extends AbstractAdmin
     {
         $formMapper
         ->with('Héro', ['class' => 'col-md-8'])
+            ->add('id', 'integer', array(
+                'disabled' => true
+            ))
             ->add('name', 'text')
             ->add('classe', ChoiceType::class, array(
                 'choices'  => [
@@ -25,6 +30,13 @@ class HeroAdmin extends AbstractAdmin
         ->with('Joueur', ['class' => 'col-md-4'])
             ->add('user', 'sonata_type_model_list', array())
         ->end();
+        /*->with('Equipements', ['class' => 'col-md-12'])
+            ->add('equipments', ModelType::class, [], [
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'position',
+                ])
+        ->end();*/
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -39,7 +51,9 @@ class HeroAdmin extends AbstractAdmin
         ->addIdentifier('name')
         ->addIdentifier('classe')
         ->addIdentifier('level')
-        ->addIdentifier('user');
+        ->addIdentifier('equipments')
+        ->addIdentifier('user')
+        ->addIdentifier('image');
     }
 
 }

@@ -1,21 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Hero edit</h1>
+<body style="background-image:url('{{ asset('/img/bgIndex.jpg') }}'); background-size: 100%;">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+<div class="container-fluid padding-top">
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('hero_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="col-lg-4">
+            {% if hero.user == app.user %}
+            <h1>Hero edit</h1>
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <div class="row">
+                <div class="col-sm">
+                    <input class="btn btn-outline-dark" type="submit" value="Edit" />
+                    {{ form_end(edit_form) }}
+                </div>
+                <div class="col-sm">
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-outline-dark" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+            {% endif %}
+            {% if hero.user != app.user %}
+            <h1>Pas de chance!</h1>
+                <br><br>
+                <h5>Ce personnage appartient à {{ hero.user }}...</h5>
+            {% endif %}
+        </div>
+
+        <div class="col-lg-4">
+            <br>
+            <a class="btn btn-outline-dark" href="{{ path('hero_index') }}">Back to the list</a>
+        </div>
+    </div>
+</div>
+</body>
 {% endblock %}
+

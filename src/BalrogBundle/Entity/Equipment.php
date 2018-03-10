@@ -2,6 +2,7 @@
 
 namespace BalrogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,11 +37,53 @@ class Equipment
     protected $rareness;
 
     /**
+     * @var Inventaire Collection
+     * 
+     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="equipId")
+     */
+    private $inventories;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="strength", type="integer")
+     */
+    private $strength;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="agility", type="integer")
+     */
+    private $agility;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="intelligence", type="integer")
+     */
+    private $intelligence;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="chance", type="integer")
+     */
+    private $chance;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Level", inversedBy="equipments")
      * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
      */
     private $level;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->inventories = new ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -118,10 +161,143 @@ class Equipment
      *
      * @return self
      */
-    public function setLevel($level)
+    public function setLevel(\BalrogBundle\Entity\Level $level = null)
     {
         $this->level = $level;
 
         return $this;
+    }
+
+    /**
+     * Set strength.
+     *
+     * @param int $strength
+     *
+     * @return Equipment
+     */
+    public function setStrength($strength)
+    {
+        $this->strength = $strength;
+
+        return $this;
+    }
+
+    /**
+     * Get strength.
+     *
+     * @return int
+     */
+    public function getStrength()
+    {
+        return $this->strength;
+    }
+
+    /**
+     * Set agility.
+     *
+     * @param int $agility
+     *
+     * @return Equipment
+     */
+    public function setAgility($agility)
+    {
+        $this->agility = $agility;
+
+        return $this;
+    }
+
+    /**
+     * Get agility.
+     *
+     * @return int
+     */
+    public function getAgility()
+    {
+        return $this->agility;
+    }
+
+    /**
+     * Set intelligence.
+     *
+     * @param int $intelligence
+     *
+     * @return Equipment
+     */
+    public function setIntelligence($intelligence)
+    {
+        $this->intelligence = $intelligence;
+
+        return $this;
+    }
+
+    /**
+     * Get intelligence.
+     *
+     * @return int
+     */
+    public function getIntelligence()
+    {
+        return $this->intelligence;
+    }
+
+    /**
+     * Set chance.
+     *
+     * @param int $chance
+     *
+     * @return Equipment
+     */
+    public function setChance($chance)
+    {
+        $this->chance = $chance;
+
+        return $this;
+    }
+
+    /**
+     * Get chance.
+     *
+     * @return int
+     */
+    public function getChance()
+    {
+        return $this->chance;
+    }
+
+
+    /**
+     * Add inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return Equipment
+     */
+    public function addInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        $this->inventories[] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Remove inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        return $this->inventories->removeElement($inventory);
+    }
+
+    /**
+     * Get inventories.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInventories()
+    {
+        return $this->inventories;
     }
 }
