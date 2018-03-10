@@ -13,6 +13,9 @@ class MonsterAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('Monster', ['class' => 'col-md-9'])
+                ->add('id', 'integer', array(
+                    'disabled' => true
+                ))
                 ->add('name', 'text')
                 ->add('health', 'integer')
                 ->add('damages', 'integer')

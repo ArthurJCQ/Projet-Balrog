@@ -120,7 +120,7 @@ class Monster extends Personnage
      *
      * @return self
      */
-    public function setLevel($level)
+    public function setLevel(\BalrogBundle\Entity\Level $level = null)
     {
         $this->level = $level;
 
