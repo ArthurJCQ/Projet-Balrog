@@ -29,14 +29,14 @@ class HeroAdmin extends AbstractAdmin
         ->end()
         ->with('Joueur', ['class' => 'col-md-4'])
             ->add('user', 'sonata_type_model_list', array())
-        ->end()
-        ->with('Equipements', ['class' => 'col-md-12'])
+        ->end();
+        /*->with('Equipements', ['class' => 'col-md-12'])
             ->add('equipments', ModelType::class, [], [
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',
                 ])
-        ->end();
+        ->end();*/
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

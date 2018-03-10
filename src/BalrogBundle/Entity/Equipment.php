@@ -82,7 +82,6 @@ class Equipment
      */
     public function __construct()
     {
-        $this->heros = new ArrayCollection();
         $this->inventories = new ArrayCollection();
     }
 
@@ -265,41 +264,6 @@ class Equipment
         return $this->chance;
     }
 
-    /**
-     * Add hero.
-     *
-     * @param \BalrogBundle\Entity\Hero $hero
-     *
-     * @return Equipment
-     */
-    public function addHero(\BalrogBundle\Entity\Hero $hero)
-    {
-        $this->heros[] = $hero;
-
-        return $this;
-    }
-
-    /**
-     * Remove hero.
-     *
-     * @param \BalrogBundle\Entity\Hero $hero
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeHero(\BalrogBundle\Entity\Hero $hero)
-    {
-        return $this->heros->removeElement($hero);
-    }
-
-    /**
-     * Get heros.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getHeros()
-    {
-        return $this->heros;
-    }
 
     /**
      * Add inventory.

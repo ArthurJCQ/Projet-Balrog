@@ -104,7 +104,6 @@ class Hero extends Personnage
     public function __construct()
     {
         $this->inventories = new ArrayCollection();
-        $this->equipments = new ArrayCollection();
     }
 
     /**
@@ -391,41 +390,6 @@ class Hero extends Personnage
         return $this->image;
     }
 
-    /**
-     * Add equipment.
-     *
-     * @param \BalrogBundle\Entity\Equipment $equipment
-     *
-     * @return Hero
-     */
-    public function addEquipment(\BalrogBundle\Entity\Equipment $equipment)
-    {
-        $this->equipments[] = $equipment;
-
-        return $this;
-    }
-
-    /**
-     * Remove equipment.
-     *
-     * @param \BalrogBundle\Entity\Equipment $equipment
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeEquipment(\BalrogBundle\Entity\Equipment $equipment)
-    {
-        return $this->equipments->removeElement($equipment);
-    }
-
-    /**
-     * Get equipments.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEquipments()
-    {
-        return $this->equipments;
-    }
 
     /**
      * Add inventory.
