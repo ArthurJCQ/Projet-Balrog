@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<body style="background-image:url('{{ asset('/img/bgIndex.jpg') }}'); background-size: 100%; background-size: 100%;  background-repeat: no-repeat; background-attachment: fixed;">
 
 <div class="container-fluid padding-top" >
 
@@ -22,6 +23,7 @@
         </div>
 
         <div class="col-lg-4">
+
             <table class="table">
                 <tbody>
                     <tr>
@@ -67,12 +69,14 @@
                 </tbody>
             </table>
         </div>
+
         <div class="col-lg-2">
             <a class="btn btn-outline-dark" href="{{ path('hero_index') }}">Back to the list</a>
         </div>
     </div>
 </div>
 
+{%  if hero.user == app.user %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4">
@@ -87,4 +91,6 @@
         </div>
     </div>
 </div>
+{% endif %}
+</body>
 {% endblock %}

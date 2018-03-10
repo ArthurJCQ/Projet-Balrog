@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<body style="background-image:url('{{ asset('/img/bgNew.png') }}'); background-size: 100%;">
 <div class="container-fluid padding-top">
 
     <div class="row">
@@ -24,9 +25,11 @@
         </div>
 
         <div class="col-lg-4">
+
             <a class="btn btn-outline-dark" href="{{ path('hero_index') }}">Back to the list</a>
         </div>
 
     </div>
 </div>
+</body>
 {% endblock %}
