@@ -31,7 +31,7 @@ class HeroAdmin extends AbstractAdmin
             ->add('user', 'sonata_type_model_list', array())
         ->end()
         ->with('Equipements', ['class' => 'col-md-12'])
-            ->add('equipments', CollectionType::class, [], [
+            ->add('equipments', ModelType::class, [], [
                 'edit' => 'inline',
                 'inline' => 'table',
                 'sortable' => 'position',

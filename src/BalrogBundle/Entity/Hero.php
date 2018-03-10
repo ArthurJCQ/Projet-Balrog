@@ -46,6 +46,13 @@ class Hero extends Personnage
     private $level;
 
     /**
+     * @var Inventaire Collection
+     * 
+     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="heroId")
+     */
+    private $inventories;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="health", type="integer")
@@ -88,12 +95,6 @@ class Hero extends Personnage
     private $damages;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Equipment", inversedBy="heros")
-     * @ORM\JoinTable(name="hero_equip")
-     */
-    private $equipments;
-
-    /**
      * @var string
      * 
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
@@ -102,7 +103,8 @@ class Hero extends Personnage
 
     public function __construct()
     {
-        
+        $this->inventories = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
     }
 
     /**
@@ -422,5 +424,41 @@ class Hero extends Personnage
     public function getEquipments()
     {
         return $this->equipments;
+    }
+
+    /**
+     * Add inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return Hero
+     */
+    public function addInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        $this->inventories[] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Remove inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        return $this->inventories->removeElement($inventory);
+    }
+
+    /**
+     * Get inventories.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInventories()
+    {
+        return $this->inventories;
     }
 }

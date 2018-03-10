@@ -37,6 +37,13 @@ class Equipment
     protected $rareness;
 
     /**
+     * @var Inventaire Collection
+     * 
+     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="equipId")
+     */
+    private $inventories;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="strength", type="integer")
@@ -71,10 +78,13 @@ class Equipment
     private $level;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Hero", mappedBy="equipments")
+     * Constructor
      */
-    private $heros;
-
+    public function __construct()
+    {
+        $this->heros = new ArrayCollection();
+        $this->inventories = new ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -254,13 +264,6 @@ class Equipment
     {
         return $this->chance;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->heros = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add hero.
@@ -296,5 +299,41 @@ class Equipment
     public function getHeros()
     {
         return $this->heros;
+    }
+
+    /**
+     * Add inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return Equipment
+     */
+    public function addInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        $this->inventories[] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Remove inventory.
+     *
+     * @param \BalrogBundle\Entity\Inventaire $inventory
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeInventory(\BalrogBundle\Entity\Inventaire $inventory)
+    {
+        return $this->inventories->removeElement($inventory);
+    }
+
+    /**
+     * Get inventories.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInventories()
+    {
+        return $this->inventories;
     }
 }
