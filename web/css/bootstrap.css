@@ -6148,6 +6148,10 @@ button.bg-light:focus {
   background-color: #343a40 !important;
 }
 
+.bg-rose {
+  background-color: #D71044 !important;
+}
+
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
@@ -8821,6 +8825,10 @@ button.bg-dark:focus {
 
 .text-white {
   color: #fff !important;
+}
+
+.text-purple {
+  color: #D71044 !important;
 }
 
 .text-primary {
