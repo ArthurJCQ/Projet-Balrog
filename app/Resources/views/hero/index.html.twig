@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/hero.css') }}"/>
+{% endblock %}
 
 {% block body %}
-<body style="background-image:url('{{ asset('/img/bgIndex.jpg') }}'); background-size: 100%;  background-repeat: no-repeat; background-attachment: fixed;">
+<section>
 <div class="container-fluid padding-top" >
     <div class="row">
         <div class="col-lg-5">
@@ -53,8 +57,8 @@
                             <td>{{ hero.damages }}</td>
                             <td>
                                 <div class="">
-                                    <a class="btn btn-outline-dark  btn-block" href="{{ path('hero_show', { 'id': hero.id }) }}">show</a>
-                                    <a class="btn btn-outline-dark  btn-block" href="{{ path('hero_edit', { 'id': hero.id }) }}">edit</a>
+                                    <a class="btn btn-outline-danger btn-block" href="{{ path('hero_show', { 'id': hero.id }) }}">show</a>
+                                    <a class="btn btn-outline-danger btn-block" href="{{ path('hero_edit', { 'id': hero.id }) }}">edit</a>
                                 </div>
                             </td>
                         </tr>
@@ -65,10 +69,10 @@
         </div>
 
         <div class="col-lg-2 ">
-            <a class="btn btn-outline-dark" href="{{ path('hero_new') }}">Create a new hero</a>
+            <a class="btn btn-outline-primary" href="{{ path('hero_new') }}">Create a new hero</a>
         </div>
 
     </div>
 </div>
-</body>
+</section>
 {% endblock %}

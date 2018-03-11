@@ -84,7 +84,7 @@ class HeroController extends Controller
      * Displays a form to edit an existing hero entity.
      *
      * @Route("/{id}/edit", name="hero_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET", "POST", "DELETE"})
      */
     public function editAction(Request $request, Hero $hero)
     {

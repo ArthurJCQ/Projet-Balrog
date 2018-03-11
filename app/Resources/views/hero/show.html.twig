@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/hero.css') }}"/>
+{% endblock %}
+
 {% block body %}
-<body style="background-image:url('{{ asset('/img/bgIndex.jpg') }}'); background-size: 100%; background-size: 100%;  background-repeat: no-repeat; background-attachment: fixed;">
+<section>
 
 <div class="container-fluid padding-top" >
 
@@ -70,7 +75,7 @@
         </div>
 
         <div class="col-lg-2">
-            <a class="btn btn-outline-dark" href="{{ path('hero_index') }}">Back to the list</a>
+            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Back to the list</a>
         </div>
     </div>
 </div>
@@ -81,15 +86,17 @@
         <div class="col-lg-4">
         </div>
         <div class="col-lg-3">
-            <a class="btn btn-outline-dark" href="{{ path('hero_edit', { 'id': hero.id }) }}">Edit</a>
+            <a class="btn btn-outline-danger" href="{{ path('hero_edit', { 'id': hero.id }) }}">Edit</a>
         </div>
         <div class="col-lg-1">
             {{ form_start(delete_form) }}
-            <input class="btn btn-outline-dark" type="submit" value="Delete">
+            <input class="btn btn-outline-danger" type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </div>
     </div>
 </div>
 {% endif %}
-</body>
+</section>
 {% endblock %}
+
+{% block javascripts %}{% endblock %}
