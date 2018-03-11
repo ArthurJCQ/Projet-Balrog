@@ -38,4 +38,28 @@ class Round
     {
         return $this->id;
     }
+
+    /**
+     * Set level.
+     *
+     * @param \BalrogBundle\Entity\Level|null $level
+     *
+     * @return Round
+     */
+    public function setLevel(\BalrogBundle\Entity\Level $level = null)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level.
+     *
+     * @return \BalrogBundle\Entity\Level|null
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
 }

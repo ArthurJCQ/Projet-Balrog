@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Voleur extends Classe
 {
-	protected $strength = 6, $agility = 9, $chance = 4, $intelligence = 5, $health = 40;
+	protected $strength = 6, $agility = 9, $chance = 4, $intelligence = 5, $health = 40, $image = "voleur.png";
 
 	public function setCarac()
 	{
@@ -18,7 +18,8 @@ class Voleur extends Classe
 			'intelligence' => $this->intelligence,
 			'chance' => $this->chance,
 			'agility' => $this->agility,
-			'health' => $this->health
+			'health' => $this->health,
+			'image' => $this-> image
 		];
 
 		return $carac;

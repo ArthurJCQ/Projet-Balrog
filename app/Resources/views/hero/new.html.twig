@@ -1,16 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Hero creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('hero_index') }}">Back to the list</a>
-        </li>
-    </ul>
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/hero.css') }}"/>
 {% endblock %}
+
+{% block body %}
+<section>
+<div class="container-fluid padding-top">
+
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+            <h1>Hero creation</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+
+        <div class="col-lg-4">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {% set user= app.user.username %}
+            <input class="btn btn-outline-danger" type="submit" value="Create" />
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-lg-4">
+
+            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Back to the list</a>
+        </div>
+
+    </div>
+</div>
+</section>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
