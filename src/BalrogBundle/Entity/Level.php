@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="level")
  * @ORM\Entity(repositoryClass="BalrogBundle\Repository\LevelRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Level
 {
@@ -38,7 +39,7 @@ class Level
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Monster", mappedBy="level")
+     * @ORM\OneToMany(targetEntity="Monster", mappedBy="level", cascade={"all"})
      */
     private $monsters;
 
@@ -48,7 +49,7 @@ class Level
     private $rounds;
 
     /**
-     * @ORM\OneToMany(targetEntity="Equipment", mappedBy="level")
+     * @ORM\OneToMany(targetEntity="Equipment", mappedBy="level", cascade={"all"})
      */
     private $equipments;
 
@@ -59,6 +60,23 @@ class Level
         $this->monsters = new ArrayCollection();
         $this->rounds = new ArrayCollection();
         $this->equipments = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PostUpdate
+     */
+    public function updateLevel($level)
+    {
+        //dump($level);die();
+        //$this->preUpdate($level);
+    }
+
+    /**
+     * 
+     */
+    public function preUpdate($level)
+    {
+        //$level->setEquipments($level->getEquipments());
     }
 
     /**
@@ -133,8 +151,9 @@ class Level
      *
      * @return self
      */
-    public function setMonsters($monsters)
+    public function setMonsters(\BalrogBundle\Entity\Monster $monsters)
     {
+        dump($monster);die();
         $this->monsters[] = $monsters;
 
         return $this;
@@ -153,7 +172,7 @@ class Level
      *
      * @return self
      */
-    public function setRounds($rounds)
+    public function setRounds(\BalrogBundle\Entity\Round $rounds)
     {
         $this->rounds[] = $rounds;
 
@@ -173,10 +192,95 @@ class Level
      *
      * @return self
      */
-    public function setEquipments($equipments)
+    public function setEquipments(\BalrogBundle\Entity\Equipment $equipments)
     {
+        dump($equipment);die();
+
         $this->equipments[] = $equipments;
 
         return $this;
     }
+
+    /**
+     * Add monster.
+     *
+     * @param \BalrogBundle\Entity\Monster $monster
+     *
+     * @return Level
+     */
+    public function addMonster(\BalrogBundle\Entity\Monster $monster)
+    {
+        dump($monster);die();
+        $this->monsters[] = $monster;
+        $monster->setLevel($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove monster.
+     *
+     * @param \BalrogBundle\Entity\Monster $monster
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeMonster(\BalrogBundle\Entity\Monster $monster)
+    {
+        return $this->monsters->removeElement($monster);
+    }
+
+    /**
+     * Add round.
+     *
+     * @param \BalrogBundle\Entity\Round $round
+     *
+     * @return Level
+     */
+    public function addRound(\BalrogBundle\Entity\Round $round)
+    {
+        $this->rounds[] = $round;
+
+        return $this;
+    }
+
+    /**
+     * Remove round.
+     *
+     * @param \BalrogBundle\Entity\Round $round
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeRound(\BalrogBundle\Entity\Round $round)
+    {
+        return $this->rounds->removeElement($round);
+    }
+
+    /**
+     * Add equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment $equipment
+     *
+     * @return Level
+     */
+    public function addEquipment(\BalrogBundle\Entity\Equipment $equipment)
+    {
+        dump($equipment);die();
+        $this->equipments[] = $equipment;
+        $equipment->setLevel($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment $equipment
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeEquipment(\BalrogBundle\Entity\Equipment $equipment)
+    {
+        return $this->equipments->removeElement($equipment);
+    }
+
 }

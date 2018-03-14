@@ -11,10 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  /** @ORM\MappedSuperclass */
  abstract class Classe
 {
-	protected $strength, $agility, $chance, $intelligence, $health;
+	protected $strength, $agility, $chance, $intelligence, $health, $image;
 
 	abstract public function setCarac();
 
 	abstract public function calculDamages();
-
 }

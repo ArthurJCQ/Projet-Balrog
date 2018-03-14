@@ -1,51 +1,78 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/hero.css') }}"/>
+{% endblock %}
+
 {% block body %}
-    <h1>Heroes list</h1>
+<section>
+<div class="container-fluid padding-top" >
+    <div class="row">
+        <div class="col-lg-5">
+        </div>
+        <div class="col-lg-4">
+            <h1>Heroes list</h1>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Level</th>
-                <th>Pv</th>
-                <th>Strength</th>
-                <th>Agility</th>
-                <th>Intelligence</th>
-                <th>Chance</th>
-                <th>Damage</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for hero in heroes %}
-            <tr>
-                <td><a href="{{ path('hero_show', { 'id': hero.id }) }}">{{ hero.id }}</a></td>
-                <td>{{ hero.level }}</td>
-                <td>{{ hero.pv }}</td>
-                <td>{{ hero.strength }}</td>
-                <td>{{ hero.agility }}</td>
-                <td>{{ hero.intelligence }}</td>
-                <td>{{ hero.chance }}</td>
-                <td>{{ hero.damage }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('hero_show', { 'id': hero.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('hero_edit', { 'id': hero.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
 
-    <ul>
-        <li>
-            <a href="{{ path('hero_new') }}">Create a new hero</a>
-        </li>
-    </ul>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Classe</th>
+                        <th>Level</th>
+                        <th>Health</th>
+                        <th>Strength</th>
+                        <th>Agility</th>
+                        <th>Intelligence</th>
+                        <th>Chance</th>
+                        <th>Damages</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                {% set nb=0 %}
+                {% for hero in heroes %}
+                    {% if hero.user == app.user %}
+                        {% set nb=nb+1 %}
+                        <tr>
+                            <td><a href="{{ path('hero_show', { 'id': hero.id }) }}">{{ nb }}</a></td>
+                            <td>{{ hero.name }}</td>
+                            <td>{{ hero.classe }}</td>
+                            <td>{{ hero.level }}</td>
+                            <td>{{ hero.health }}</td>
+                            <td>{{ hero.strength }}</td>
+                            <td>{{ hero.agility }}</td>
+                            <td>{{ hero.intelligence }}</td>
+                            <td>{{ hero.chance }}</td>
+                            <td>{{ hero.damages }}</td>
+                            <td>
+                                <div class="">
+                                    <a class="btn btn-outline-danger btn-block" href="{{ path('hero_show', { 'id': hero.id }) }}">show</a>
+                                    <a class="btn btn-outline-danger btn-block" href="{{ path('hero_edit', { 'id': hero.id }) }}">edit</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-2 ">
+            <a class="btn btn-outline-primary" href="{{ path('hero_new') }}">Create a new hero</a>
+        </div>
+
+    </div>
+</div>
+</section>
 {% endblock %}

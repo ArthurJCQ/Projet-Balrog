@@ -15,6 +15,9 @@ class EquipmentAdmin extends AbstractAdmin
     {
         $formMapper
         ->with('Equipement', ['class' => 'col-md-9'])
+            ->add('id', 'integer', array(
+                'disabled' => true
+            ))
             ->add('name', 'text')
             ->add('rareness', ChoiceType::class, array(
             'choices'  => [
@@ -31,6 +34,12 @@ class EquipmentAdmin extends AbstractAdmin
                             'expanded' => true,
                             'multiple' => false,
                         ])
+        ->end()
+        ->with('Boosts', ['class' => 'col-md-12'])
+            ->add('strength', 'integer')
+            ->add('agility', 'integer')
+            ->add('intelligence', 'integer')
+            ->add('chance', 'integer')
         ->end();
     }
 
