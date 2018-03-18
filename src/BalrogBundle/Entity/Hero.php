@@ -48,7 +48,7 @@ class Hero extends Personnage
     /**
      * @var Inventaire Collection
      * 
-     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="heroId")
+     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="hero")
      */
     private $inventories;
 
@@ -111,7 +111,7 @@ class Hero extends Personnage
      * @param [string] $classe [classe du personnage]
      * @ORM\PrePersist
      */
-    public function setClass()
+    public function updateCarac()
     {
         $classeArray = [
             'Guerrier' => new Guerrier,
@@ -136,6 +136,15 @@ class Hero extends Personnage
         $this->image = $carac['image'];
         $this->level = 1;
         $this->damages = $calcDam;
+
+        foreach ($this->inventories as $inv) {
+            if($inv->getEquiped()){
+                $this->strength += $inv->getEquipment()->getStrength();
+                $this->intelligence += $inv->getEquipment()->getIntelligence();
+                $this->chance += $inv->getEquipment()->getChance();
+                $this->agility += $inv->getEquipment()->getAgility();
+            }
+        }
 
     }
      /**
@@ -362,7 +371,7 @@ class Hero extends Personnage
     public function setClasse($classe)
     {
         $this->classe = $classe;
-
+        $this->updateCarac();
         return $this;
     }
 
@@ -402,6 +411,8 @@ class Hero extends Personnage
     {
         $this->inventories[] = $inventory;
 
+        $this->updateCarac();
+
         return $this;
     }
 
@@ -414,7 +425,9 @@ class Hero extends Personnage
      */
     public function removeInventory(\BalrogBundle\Entity\Inventaire $inventory)
     {
-        return $this->inventories->removeElement($inventory);
+        $bool = $this->inventories->removeElement($inventory);
+        $this->updateCarac();
+        return $bool;
     }
 
     /**
