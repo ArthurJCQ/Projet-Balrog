@@ -29,6 +29,20 @@ class HeroAdmin extends AbstractAdmin
         ->end()
         ->with('Joueur', ['class' => 'col-md-4'])
             ->add('user', 'sonata_type_model_list', array())
+        ->end()
+        ->with('Caractéristiques')
+            ->add('strength', 'integer', array(
+                'disabled' => true
+            ))
+            ->add('intelligence', 'integer', array(
+                'disabled' => true
+            ))
+            ->add('chance', 'integer', array(
+                'disabled' => true
+            ))
+            ->add('agility', 'integer', array(
+                'disabled' => true
+            ))
         ->end();
         /*->with('Equipements', ['class' => 'col-md-12'])
             ->add('equipments', ModelType::class, [], [
@@ -51,7 +65,11 @@ class HeroAdmin extends AbstractAdmin
         ->addIdentifier('name')
         ->addIdentifier('classe')
         ->addIdentifier('level')
-        ->addIdentifier('equipments')
+        ->addIdentifier('strength')
+        ->addIdentifier('intelligence')
+        ->addIdentifier('chance')
+        ->addIdentifier('agility')
+        ->addIdentifier('inventories')
         ->addIdentifier('user')
         ->addIdentifier('image');
     }

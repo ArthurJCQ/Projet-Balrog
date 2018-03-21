@@ -39,7 +39,7 @@ class Equipment
     /**
      * @var Inventaire Collection
      * 
-     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="equipId")
+     * @ORM\OneToMany(targetEntity="Inventaire", mappedBy="equipment")
      */
     private $inventories;
 

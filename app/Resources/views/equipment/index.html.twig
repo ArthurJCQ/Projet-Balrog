@@ -1,42 +1,65 @@
 {% extends 'base.html.twig' %}
 
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+        <div class="container">
+            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Accueil</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
+        </div>
+    </nav>
+{% endblock %}
+
 {% block body %}
-    <h1>Equipment list</h1>
+<section>
+    <div class="container-fluid padding-top" >
+        <div class="row">
+            <div class="col-lg-5">
+            </div>
+            <div class="col-lg-4">
+                <h1>Équipements</h1>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Rareness</th>
-                <th>Strength</th>
-                <th>Agility</th>
-                <th>Intelligence</th>
-                <th>Chance</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for equipment in equipment %}
-            <tr>
-                <td><a href="{{ path('equipment_show', { 'id': equipment.id }) }}">{{ equipment.id }}</a></td>
-                <td>{{ equipment.name }}</td>
-                <td>{{ equipment.rareness }}</td>
-                <td>{{ equipment.strength }}</td>
-                <td>{{ equipment.agility }}</td>
-                <td>{{ equipment.intelligence }}</td>
-                <td>{{ equipment.chance }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('equipment_show', { 'id': equipment.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
 
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Rareness</th>
+                            <th>Strength</th>
+                            <th>Agility</th>
+                            <th>Intelligence</th>
+                            <th>Chance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for equipment in equipment %}
+                        <tr>
+                            <td><a href="{{ path('equipment_show', { 'id': equipment.id }) }}">{{ equipment.id }}</a></td>
+                            <td>{{ equipment.name }}</td>
+                            <td>{{ equipment.rareness }}</td>
+                            <td>{{ equipment.strength }}</td>
+                            <td>{{ equipment.agility }}</td>
+                            <td>{{ equipment.intelligence }}</td>
+                            <td>{{ equipment.chance }}</td>
+                            <td>
+                                <ul>
+                                    <a class="btn btn-outline-danger btn-block" href="{{ path('equipment_show', { 'id': equipment.id }) }}">show</a>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
     
 {% endblock %}
