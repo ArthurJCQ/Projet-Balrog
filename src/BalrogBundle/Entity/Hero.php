@@ -143,7 +143,13 @@ class Hero extends Personnage
                 $this->intelligence += $inv->getEquipment()->getIntelligence();
                 $this->chance += $inv->getEquipment()->getChance();
                 $this->agility += $inv->getEquipment()->getAgility();
-            }
+            }/*
+            if(!$inv->getEquiped()){
+                $this->strength -= $inv->getEquipment()->getStrength();
+                $this->intelligence -= $inv->getEquipment()->getIntelligence();
+                $this->chance -= $inv->getEquipment()->getChance();
+                $this->agility -= $inv->getEquipment()->getAgility();
+            }*/
         }
 
     }
@@ -426,7 +432,9 @@ class Hero extends Personnage
     public function removeInventory(\BalrogBundle\Entity\Inventaire $inventory)
     {
         $bool = $this->inventories->removeElement($inventory);
+
         $this->updateCarac();
+
         return $bool;
     }
 

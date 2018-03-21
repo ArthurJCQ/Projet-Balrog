@@ -75,7 +75,6 @@ class InventaireAdmin extends AbstractAdmin
 
     public function preRemove($inventaire)
     {
-        //dump($inventaire);die();
         $inventaire->getHero()->removeInventory($inventaire);
     }
 }
