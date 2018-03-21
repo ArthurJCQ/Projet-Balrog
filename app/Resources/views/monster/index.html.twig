@@ -1,10 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Monsters list</h1>
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+        <div class="container">
+            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Accueil</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
+        </div>
+    </nav>
+{% endblock %}
 
-    <table>
-        <thead>
+{% block body %}
+<section>
+    <div class="container-fluid padding-top" >
+        <div class="row">
+            <div class="col-lg-5">
+            </div>
+            <div class="col-lg-4">
+                <h1>Monstres</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
+
+                <table class="table">
+                    <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Damages</th>
@@ -24,9 +46,7 @@
                 <td>{{ monster.name }}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('monster_show', { 'id': monster.id }) }}">show</a>
-                        </li>
+                        <a class="btn btn-outline-danger btn-block" href="{{ path('monster_show', { 'id': monster.id }) }}">show</a>
                     </ul>
                 </td>
             </tr>
@@ -34,5 +54,8 @@
         </tbody>
     </table>
 
-    
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

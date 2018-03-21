@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use BalrogBundle\Form\EventListener\AddCat;
 
 class HeroType extends AbstractType
 {
@@ -19,14 +20,7 @@ class HeroType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('classe',ChoiceType::class,array(
-                'choices' => array(
-                    'Archer' => 'Archer',
-                    'Guerrier' => 'Guerrier',
-                    'Mage' => 'Mage',
-                    'Voleur' => 'Voleur',
-                ),
-            ));
+            ->addEventSubscriber(new AddCat());
 
     }/**
      * {@inheritdoc}
