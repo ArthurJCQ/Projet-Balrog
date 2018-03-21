@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Equipment</h1>
-
-    <table>
+<div class="col-md-4 mt-5">
+    <h1>Équipement</h1>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -36,9 +36,6 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('equipment_index') }}">Back to the list</a>
-        </li>
-    </ul>
+            <a class="btn btn-outline-danger btn-block" href="{{ path('equipment_index') }}">Back to the list</a>
+</div>
 {% endblock %}
