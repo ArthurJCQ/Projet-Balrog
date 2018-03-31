@@ -2,6 +2,12 @@
 
 {% block body %}
     <h1>Levels list</h1>
+    {{ app.session.set('heroID', hero.id) }}
+    {{ app.session.set('heroStr', hero.strength) }}
+    {{ app.session.set('heroAgi', hero.agility) }}
+    {{ app.session.set('heroIntel', hero.intelligence) }}
+    {{ app.session.set('heroChance', hero.Chance) }}
+    {{ app.session.set('heroDamages', hero.Damages) }}
 
     <table>
         <thead>
@@ -21,11 +27,9 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('level_show', { 'id': level.id }) }}">show</a>
+                            <a href="{{ path('level_show', { 'id': level.id }) }}">Choose</a>
                         </li>
-                        <li>
-                            <a href="{{ path('level_edit', { 'id': level.id }) }}">edit</a>
-                        </li>
+
                     </ul>
                 </td>
             </tr>
@@ -33,9 +37,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('level_new') }}">Create a new level</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -18,10 +18,10 @@ class LevelController extends Controller
     /**
      * Lists all level entities.
      *
-     * @Route("/", name="level_index")
+     * @Route("/{id}", name="level_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Hero $hero)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -29,6 +29,7 @@ class LevelController extends Controller
 
         return $this->render('level/index.html.twig', array(
             'levels' => $levels,
+            'hero' => $hero
         ));
     }
 
@@ -36,7 +37,7 @@ class LevelController extends Controller
     /**
      * Finds and displays a level.
      *
-     * @Route("/{id}", name="level_show")
+     * @Route("/fight/{id}", name="level_show")
      * @Method("GET")
      */
     public function showAction(Level $level)
@@ -44,7 +45,6 @@ class LevelController extends Controller
 
         return $this->render('level/lvl.html.twig', array(
             'level' => $level,
-
 
         ));
     }

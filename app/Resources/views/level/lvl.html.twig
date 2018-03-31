@@ -9,7 +9,6 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon2.ico') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/combat.css') }}"/>
 
-
     {% endblock %}
 
 
@@ -22,45 +21,39 @@
 
     <div id="animAl">
         <div class="bar-hero bar-con">
-            <div class="bar" data-health="50"></div>
+            <div class="bar" data-health={{ app.session.get('heroHealth') }}></div>
         </div>
-        <img src="../img/tkn.png" alt="Allies">
+        <img src="../../img/tkn.png" alt="Allies">
 
     </div>
-
+{% if level.id<7 %}
+    <div class="next">
+        <a href="{{ path('level_show', { 'id': level.id+1 }) }}">Next</a>
+    </div>
+{% endif %}
     <div id="info">
         <div id="msg"></div>
     </div>
     <div id="monster">
-        <div id ="animEn1">
+        {% set num=1 %}
+        {% for monsters in level.getmonsters() %}
+        <div id ="animEn{{ num }}" data-isalive=1>
 
-            <img src="../img/personnage.png" alt="Monster">
-            <div class="bar-one bar-con">
-                <div class="bar" data-health="9"></div>
+            <img src="../../img/personnage.png" alt={{ monsters.name }}>
+            <div class="bar-{{ num }} bar-con" >
+                <div class="bar" data-health={{ monsters.health }} ></div>
             </div>
         </div>
-        <div id ="animEn2">
-
-            <img src="../img/monstre.png" alt="Monster">
-            <div class="bar-two bar-con">
-                <div class="bar" data-health="55"></div>
-            </div>
-        </div>
-        <div id ="animEn3">
-
-            <img src="../img/personnage.png" alt="Monster">
-            <div class="bar-three bar-con">
-                <div class="bar" data-health="27"></div>
-            </div>
-        </div>
+            {% set num=num+1 %}
+        {% endfor %}
     </div>
 </div>
 
 
-<script src="../js/jQuery.js"></script>
+<script src="../../js/jQuery.js"></script>
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('../js/combat.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('../../js/combat.js') }}" ></script>
 
 {% endblock %}
 

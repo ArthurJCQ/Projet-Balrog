@@ -153,8 +153,8 @@ class Level
      */
     public function setMonsters(\BalrogBundle\Entity\Monster $monsters)
     {
-        dump($monster);die();
-        $this->monsters[] = $monsters;
+        //dump($monster);die();
+        //$this->monsters[] = $monsters;
 
         return $this;
     }

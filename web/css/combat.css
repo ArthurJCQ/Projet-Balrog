@@ -1,0 +1,86 @@
+#myContainer {
+    width: 100%;
+    height: 95vh;
+    position: relative;
+    background: #0c5460;
+}
+#animAl {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+
+}
+#animAl img{
+    max-width: 100%;
+    height: auto;
+}
+
+#animEn1, #animEn2, #animEn3 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 2vh;
+
+
+}
+#animEn1{
+    left:35%;
+}
+#animEn2{
+    left:50%;
+}
+#animEn3{
+    left:65%;
+}
+
+#monster img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/* bar de vie */
+.bar-con{
+    background-color:#ccc;
+    height:0.5em;
+    margin-bottom:1em;
+}
+.bar{
+    float:left;
+    height:100%;
+    width:0%;
+    background-color:#03AB70;
+}
+
+#info{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+
+
+}
+#info #msg{
+    font-size: 35px;
+    color: red;
+}
+
+.next {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    visibility: hidden;
+}
+
+.next a{
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+
+}
