@@ -46,6 +46,14 @@
         </div>
             {% set num=num+1 %}
         {% endfor %}
+        {% for num in num..3 %}
+            <div id ="animEn{{ num }}" style="visibility: hidden">
+
+                <div class="bar-{{ num }} bar-con" >
+                    <div class="bar"  data-health=0></div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 

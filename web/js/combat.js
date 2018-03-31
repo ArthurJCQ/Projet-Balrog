@@ -7,13 +7,14 @@ $(document).ready(function(){
 });
 
 var degat=100;
+var total = $(".bar-1 .bar").data("health")+$(".bar-2 .bar").data("health")+$(".bar-3 .bar").data("health");
 $(document).ready(function(){
 
 
 
 
     $("#animEn1").click(function(){
-
+        total=total-degat;
 
         $("#animAl").animate({bottom: '30vh'}, "slow").animate({bottom: '70vh', left: '35%'},"fast").animate({bottom: '5vh', left: '50%'});
 
@@ -35,7 +36,7 @@ $(document).ready(function(){
 
 
     $("#animEn2").click(function(){
-
+        total=total-degat;
 
         $("#animAl").animate({bottom: '30vh'}, "slow").animate({bottom: '75vh'},"fast").animate({bottom: '5vh'});
 
@@ -52,7 +53,7 @@ $(document).ready(function(){
         }, 700);
     });
     $("#animEn3").click(function(){
-
+        total=total-degat;
 
         $("#animAl").animate({bottom: '30vh'}, "slow").animate({bottom: '70vh', left:'65%'},"fast").animate({bottom: '5vh', left:'50%'});
 
@@ -61,6 +62,7 @@ $(document).ready(function(){
         window.setTimeout(function(){
             blink(1000, 200, "#animEn3");
             var percent =  $(".bar-3 .bar").data("health") - degat;
+
             $(".bar-3 .bar").data("health",percent);
             $(".bar-3 .bar").progress();
 
@@ -79,7 +81,6 @@ $(document).ready(function(){
         this.css("width", percent+"%");
         if (percent<=0){
             this.parent().parent().css("filter", "invert(100%)");
-            this.parent().parent().data("isalive",0);
         }
         else if(percent<25){
             this.css("background-color", "red");
@@ -90,7 +91,7 @@ $(document).ready(function(){
         }
 
 
-        if($(".bar-1 .bar").data("health")+$(".bar-2 .bar").data("health")+$(".bar-3 .bar").data("health")<=0){
+        if(total<=0){
             $(".next").css("visibility","visible");
 
         }
