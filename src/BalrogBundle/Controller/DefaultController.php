@@ -14,4 +14,12 @@ class DefaultController extends Controller
     {
         return $this->render('accueil/index.html.twig');
     }
+
+    /**
+     * @Route("/personnage", name="personnage")
+     */
+    public function personnageAction()
+    {
+        return $this->render('accueil/classes.html.twig');
+    }
 }

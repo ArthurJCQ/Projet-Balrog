@@ -11,7 +11,40 @@
     {{ app.session.set('heroDamages', hero.Damages) }}
     {{ app.session.set('heroName', hero.Name) }}
     {{ app.session.set('heroImg', hero.image) }}
-    <h1>Levels list</h1>
+
+{% for level in levels %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 mb-3" style="margin-top:150px;">
+                <h1 style="text-align: center;">{{ level.name }}</h1>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ level.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Difficulté</th>
+                        <td>{{ level.difficulty }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a class="btn btn-outline-danger" href="{{ path('level_show', { 'id': level.id }) }}">Choisir ce niveau</a>
+            </div>
+
+            <div class=" col-md-6 mb-3" style="margin-top:150px;">
+                <img class="card-img-top" src="../../img/lvl/{{ level.id }}.jpg">
+            </div>
+
+        </div>
+        <hr>
+    </div>
+{% endfor %}
+
+{% endblock %}
+
+ {# <h1>Liste des niveaux</h1>
     <table>
         <thead>
             <tr>
@@ -38,6 +71,4 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-{% endblock %}
+    </table>#}

@@ -24,6 +24,10 @@ body {
   border-color: #D71044;
 }
 
+.divmt {
+  margin-top:100px;
+}
+
 h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', sans-serif;
 }
