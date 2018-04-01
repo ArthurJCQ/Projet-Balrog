@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-        {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/hero.css') }}"/>
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+        <div class="container">
+            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Accueil</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
+        </div>
+    </nav>
 {% endblock %}
 
 {% block body %}
-<section>
-<div class="container-fluid padding-top">
+<div class="container-fluid divmt">
 
     <div class="row">
         <div class="col-lg-4">
@@ -36,7 +39,6 @@
 
     </div>
 </div>
-</section>
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
