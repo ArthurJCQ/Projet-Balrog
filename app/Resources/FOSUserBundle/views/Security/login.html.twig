@@ -1,8 +1,9 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
-{% block fos_user_content %}
-	{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
-    {{ include('@FOSUser/Security/login_content.html.twig') }}
-{% endblock fos_user_content %}
+{% block body %}
+
+        {% block fos_user_content %}
+            {{ include('@FOSUser/Security/login_content.html.twig') }}
+        {% endblock fos_user_content %}
+
+{% endblock %}

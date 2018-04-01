@@ -1,27 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block navbar %}
-    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mx-auto" href="#">Balrog</a>
-            <div class="collapse navbar-collapse" id="navbarCollapse1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"> <a class="nav-link" href="{{ path('accueil') }}">Accueil <span class="sr-only">(current)</span></a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#Encyclopedie">Encyclopédie</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#Univers">Univers</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#Actualites">Actualités</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">Connexion</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#sign-modal">Inscription</a> </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-{% endblock %}
 
-{% block carousel %}
+{% block body %}
     <div class="swiper-container main-slider" id="Accueil">
         <div class="swiper-wrapper">
             <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel1.png')" data-hash="slide1">
@@ -38,9 +18,7 @@
         <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
         <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
     </div>
-{% endblock  %}
 
-{% block body %}
     <section id="Encyclopedie" class="bg-white">
     <div class="container container mt-0 mb-0">
         <h3 class="display-4 text-center"> Encyclopédie </h3>
@@ -159,7 +137,7 @@
                     <!--Title-->
                     <h4 class="card-title">Ouverture du donjon de Naheulbeuk</h4>
                     <!--Text-->
-                    <p class="card-text">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est.</p>
+                    <p class="card-text">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime.</p>
                     <a href="#!" class="btn btn-outline-danger waves-effect">Lire la suite..</a>
                 </div>
 
@@ -171,106 +149,6 @@
         </div>
     </div>
     </section>
-{% endblock %}
-
-{% block footer %}
-    <footer>
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <ul class="menu">
-                        <span>Menu</span>
-                        <li>
-                            <a href="{{ path('accueil') }}">Accueil</a>
-                        </li>
-
-                        <li>
-                            <a href="#Encyclopedie">Encyclopédie</a>
-                        </li>
-
-                        <li>
-                            <a href="#Univers">Univers</a>
-                        </li>
-
-                        <li>
-                            <a href="#Actualites">Actualités</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <ul class="address">
-                        <span>Contact</span>
-                        <li>
-                            <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">06 66 66 66 66</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Panthéon-Sorbonne</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">contact@balrog.fr</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-heart" aria-hidden="true"></i> <a href="#">Made with Heart</a>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <img src="{{ asset('img/balrog.png') }}" alt="Balrog">
-                </div>
-
-            </div>
-        </div>
-    </footer>
-{% endblock %}
-
-{% block login %}
-        <!-- BEGIN # MODAL login -->
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div  align="center">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </button>
-                    </div>
-
-
-                    <!-- Begin # DIV Form -->
-
-                    <div class="card ripe-malinka-gradient form-white">
-                        <div class="card-body">
-                            <!-- Form register -->
-                            <form>
-                                <h2 class="text-center font-up font-bold py-4 white-text">Connexion</h2>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix white-text"></i>
-                                    <input type="text" id="orangeForm-email2" class="form-control">
-                                    <label for="orangeForm-email2">@Mail</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-lock prefix white-text"></i>
-                                    <input type="password" id="orangeForm-pass2" class="form-control">
-                                    <label for="orangeForm-pass2">Mot de passe</label>
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-outline-white waves-effect waves-light">Se connecter</button>
-                                </div>
-                            </form>
-                            <!-- Form register -->
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End # DIV Form -->
-
-            </div>
-        </div>
-        </div>
-        <!-- END # MODAL LOGIN -->
 {% endblock %}
 
 {% block sign %}
