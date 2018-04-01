@@ -19,11 +19,42 @@
 
 <div id ="myContainer">
 
-    <div id="animAl">
+    <div class="help">
+        <a>Pour attaquer: cliquer sur les ennemis</a><br>
+        <a>Pour se soigner: cliquer sur votre personnage</a>
+    </div>
+
+
+    <div class="stat">
+
+        <table>
+            {{ app.session.get('heroName')|upper }}
+            <tr>
+                <td>Vie</td>
+                <td>Degats</td>
+                <td>Force</td>
+                <td>Agilité</td>
+                <td>Intelligence</td>
+                <td>Chance</td>
+            </tr>
+            <tr>
+                <td class="heal">{{ app.session.get('heroHealth') }}</td>
+                <td>{{ app.session.get('heroDamages') }}</td>
+                <td>{{ app.session.get('heroStr') }}</td>
+                <td>{{ app.session.get('heroAgi') }}</td>
+                <td>{{ app.session.get('heroIntel') }}</td>
+                <td>{{ app.session.get('heroChance') }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="animAl" data-dmg="{{ app.session.get('heroDamages') }}">
+
         <div class="bar-hero bar-con">
             <div class="bar" data-health={{ app.session.get('heroHealth') }}></div>
         </div>
-        <img src="../../img/tkn.png" alt="Allies">
+        <img src="../../img/{{ app.session.get('heroImg') }}" alt="Allies">
 
     </div>
 {% if level.id<7 %}
@@ -31,15 +62,17 @@
         <a href="{{ path('level_show', { 'id': level.id+1 }) }}">Next</a>
     </div>
 {% endif %}
+    <div class="loss">
+        <a href="{{ path('hero_index') }}">Perdu !</a>
+    </div>
     <div id="info">
         <div id="msg"></div>
     </div>
     <div id="monster">
         {% set num=1 %}
         {% for monsters in level.getmonsters() %}
-        <div id ="animEn{{ num }}" data-isalive=1>
-
-            <img src="../../img/personnage.png" alt={{ monsters.name }}>
+        <div id ="animEn{{ num }}" data-dmg={{ monsters.damages }}>
+            <img src="../../img/{{ monsters.image }}" alt={{ monsters.name }} >
             <div class="bar-{{ num }} bar-con" >
                 <div class="bar" data-health={{ monsters.health }} ></div>
             </div>

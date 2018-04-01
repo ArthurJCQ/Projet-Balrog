@@ -84,3 +84,49 @@
     text-decoration: none;
 
 }
+.loss {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    visibility: hidden;
+}
+
+.loss a{
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.stat{
+    position: absolute;
+    bottom: 0%;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 14px;
+
+}
+
+table {
+    background-color: #1c2d3f;
+
+    border-collapse: collapse;
+    width: 25%;
+}
+
+th, td {
+    padding: 8px;
+    color: whitesmoke;
+    text-align: center;
+    border: 1px solid #0c5460;
+}
+
+.help{
+    width: 30%;
+
+    font-size: 18px;
+    padding-top: 20px;
+    padding-right: 20px;
+}

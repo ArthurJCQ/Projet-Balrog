@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Levels list</h1>
+
     {{ app.session.set('heroID', hero.id) }}
+    {{ app.session.set('heroHealth', hero.health) }}
     {{ app.session.set('heroStr', hero.strength) }}
     {{ app.session.set('heroAgi', hero.agility) }}
     {{ app.session.set('heroIntel', hero.intelligence) }}
     {{ app.session.set('heroChance', hero.Chance) }}
     {{ app.session.set('heroDamages', hero.Damages) }}
-
+    {{ app.session.set('heroName', hero.Name) }}
+    {{ app.session.set('heroImg', hero.image) }}
+    <h1>Levels list</h1>
     <table>
         <thead>
             <tr>
