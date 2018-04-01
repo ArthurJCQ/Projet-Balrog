@@ -1,24 +1,99 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block body %}
-    <h1>Inventaire</h1>
+<section>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ inventaire.id }}</td>
-            </tr>
-            <tr>
-                <th>Equiped</th>
-                <td>{% if inventaire.equiped %}Yes{% else %}No{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container-fluid padding-top" >
 
-    <ul>
-        <li>
-            <a href="{{ path('inventaire_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-2">
+            <h1>Hero</h1>
+        </div>
+        <div class="col-lg-5">
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-4">
+        </div>
+
+        <div class="col-lg-4">
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>#{{ hero.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ hero.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Classe</th>
+                        <td>{{ hero.classe }}</td>
+                    </tr>
+                    <tr>
+                        <th>Level</th>
+                        <td>{{ hero.level }}</td>
+                    </tr>
+                    <tr>
+                        <th>Health</th>
+                        <td>{{ hero.health }}</td>
+                    </tr>
+                    <tr>
+                        <th>Strength</th>
+                        <td>{{ hero.strength }}</td>
+                    </tr>
+                    <tr>
+                        <th>Agility</th>
+                        <td>{{ hero.agility }}</td>
+                    </tr>
+                    <tr>
+                        <th>Intelligence</th>
+                        <td>{{ hero.intelligence }}</td>
+                    </tr>
+                    <tr>
+                        <th>Chance</th>
+                        <td>{{ hero.chance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Damages</th>
+                        <td>{{ hero.damages }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-2">
+            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Back to the list</a>
+        </div>
+    </div>
+</div>
+
+{%  if hero.user == app.user %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-3">
+            <a class="btn btn-outline-danger" href="{{ path('hero_edit', { 'id': hero.id }) }}">Edit</a>
+        </div>
+        <div class="col-lg-1">
+            {{ form_start(delete_form) }}
+            <input class="btn btn-outline-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+</div>
+{% endif %}
+</section>
 {% endblock %}
+
+{% block javascripts %}{% endblock %}

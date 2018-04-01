@@ -1,32 +1,61 @@
 {% extends 'base.html.twig' %}
-
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+        <div class="container">
+            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Accueil</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
+        </div>
+    </nav>
+{% endblock %}
 {% block body %}
+    <div class="container-fluid divmt" >
+    <div class="row">
+    <div class="col-lg-5">
+    </div>
+    <div class="col-lg-4">
     <h1>Inventaires list</h1>
+    </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Equiped</th>
-                <th>Actions</th>
-            </tr>
+    <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-8">
+
+
+<table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Equiped</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for inventaire in inventaires %}
+            {% if inventaire.getHero().id==hero.id %}
             <tr>
-                <td><a href="{{ path('inventaire_show', { 'id': inventaire.id }) }}">{{ inventaire.id }}</a></td>
+                <td>{{ inventaire.getEquipment() }}</td>
                 <td>{% if inventaire.equiped %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('inventaire_show', { 'id': inventaire.id }) }}">show</a>
-                        </li>
+
+                            <a class="btn btn-outline-danger btn-block" href="{{ path('inventaire_show', { 'id': inventaire.id }) }}">show</a>
+
                     </ul>
                 </td>
             </tr>
+                {% endif %}
         {% endfor %}
         </tbody>
     </table>
+    </div>
 
-    
+        <div class="col-lg-2 ">
+            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Retour</a>
+        </div>
+
+    </div>
+    </div>
+
 {% endblock %}
