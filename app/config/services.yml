@@ -62,3 +62,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Hero, group: 'Game - Balrog' }
         public: true
+
+    admin.inventaire:
+        class: BalrogBundle\Admin\InventaireAdmin
+        arguments: [~, BalrogBundle\Entity\Inventaire, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Inventaire, group: 'Game - Balrog' }
+        public: true

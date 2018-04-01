@@ -27,7 +27,7 @@ class Inventaire
      * @ORM\ManyToOne(targetEntity="Hero", inversedBy="inventories")
      * @ORM\JoinColumn(name="hero_id", referencedColumnName="id")
      */
-    private $heroId;
+    private $hero;
 
     /**
      * @var int
@@ -35,14 +35,15 @@ class Inventaire
      * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="inventories")
      * @ORM\JoinColumn(name="equip_id", referencedColumnName="id")
      */
-    private $equipId;
+    private $equipment = "";
 
     /**
      * @var bool
      *
      * @ORM\Column(name="equiped", type="boolean")
      */
-    private $equiped;
+    private $equiped = false;
+
 
 
     /**
@@ -53,54 +54,6 @@ class Inventaire
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set heroId.
-     *
-     * @param int $heroId
-     *
-     * @return Inventaire
-     */
-    public function setHeroId($heroId)
-    {
-        $this->heroId = $heroId;
-
-        return $this;
-    }
-
-    /**
-     * Get heroId.
-     *
-     * @return int
-     */
-    public function getHeroId()
-    {
-        return $this->heroId;
-    }
-
-    /**
-     * Set equipId.
-     *
-     * @param int $equipId
-     *
-     * @return Inventaire
-     */
-    public function setEquipId($equipId)
-    {
-        $this->equipId = $equipId;
-
-        return $this;
-    }
-
-    /**
-     * Get equipId.
-     *
-     * @return int
-     */
-    public function getEquipId()
-    {
-        return $this->equipId;
     }
 
     /**
@@ -125,5 +78,62 @@ class Inventaire
     public function getEquiped()
     {
         return $this->equiped;
+    }
+
+    /**
+     * Set hero.
+     *
+     * @param \BalrogBundle\Entity\Hero|null $hero
+     *
+     * @return Inventaire
+     */
+    public function setHero(\BalrogBundle\Entity\Hero $hero = null)
+    {
+        $this->hero = $hero;
+
+        return $this;
+    }
+
+    /**
+     * Get hero.
+     *
+     * @return \BalrogBundle\Entity\Hero|null
+     */
+    public function getHero()
+    {
+        return $this->hero;
+    }
+
+    /**
+     * Set equipment.
+     *
+     * @param \BalrogBundle\Entity\Equipment|null $equipment
+     *
+     * @return Inventaire
+     */
+    public function setEquipment(\BalrogBundle\Entity\Equipment $equipment = null)
+    {
+        $this->equipment = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Get equipment.
+     *
+     * @return \BalrogBundle\Entity\Equipment|null
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
+    }
+
+
+    public function __toString()
+    {
+        if ($this->equipment === "") {
+            return $this->equipment;
+        }
+        return $this->equipment->getName();
     }
 }

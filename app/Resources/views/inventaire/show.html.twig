@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inventaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ inventaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Equiped</th>
+                <td>{% if inventaire.equiped %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('inventaire_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
