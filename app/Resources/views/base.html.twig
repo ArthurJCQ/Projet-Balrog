@@ -1,39 +1,121 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Balrog{% endblock %}</title>
-        {% block stylesheets %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon2.ico') }}" />
             <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
             <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/popup.css') }}"/>
-        {% endblock %}
+        {% block style %}{% endblock %}
     </head>
     <body>
 
-    {% block navbar %}{% endblock %}
-
-    {% block carousel %}{% endblock %}
+    {% block navbar %}
+    {% if app.request.get('_route') == 'accueil' %}
+        <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
+            {% else %}
+            <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv bg-dark">
+                {% endif %}
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Balrog</a>
+                <div class="collapse navbar-collapse" id="navbarCollapse1">
+                    <ul class="navbar-nav ml-auto">
+                        {% if app.request.get('_route') == 'accueil' %}
+                        <li class="nav-item active"> <a class="nav-link" href="{{ path('accueil') }}">Accueil <span class="sr-only">(current)</span></a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#Encyclopedie">Encyclopédie</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#Univers">Univers</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#Actualites">Actualités</a> </li>
+                        {% endif %}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if app.request.get('_route') == 'hero_index' %}
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('hero_new') }}">Créer un nouveau personnage</a> </li>
+                            {% endif %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.user.username|upper }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ path('hero_index') }}">Jouer au jeu</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                </div>
+                            </li>
+                        {% else %}
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('fos_user_security_login') }}" >Connexion</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('fos_user_registration_register') }}" >Inscription</a> </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
 
     {% block body %}{% endblock %}
 
-    {% block footer %}{% endblock %}
+    {% block footer %}
+            <div class="container-fluid bg-dark">
+                <div class="row">
 
-    {% block login %}{% endblock %}
+                    <div class="col-md-4 col-sm-6 col-xs-12" style="position: relative; left:50px;">
+                        <img src="{{ asset('img/balrog-footer.png') }}" alt="Balrog">
+                    </div>
 
-    {% block sign %}{% endblock %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
+                        <ul class="menu">
+                            <span>Équipe</span>
+                            <li>
+                                <a href="{{ path('accueil') }}">Arthur JACQUEMIN</a>
+                            </li>
+
+                            <li>
+                                <a href="#!">Moussa ISKOUNENE</a>
+                            </li>
+
+                            <li>
+                                <a href="#!">Etienne GOUJON</a>
+                            </li>
+
+                            <li>
+                                <a href="#!">Mehdi ZAIDI</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
+                        <ul class="address">
+                            <span>Contact</span>
+                            <li>
+                                <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">06 66 66 66 66</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Panthéon-Sorbonne</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">contact@balrog.fr</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-heart" aria-hidden="true"></i> <a href="#">Made with Heart</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+    {% endblock %}
 
     {% block javascripts %}
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{ asset('js/swiper.js') }}" ></script>
-        <script type="text/javascript" src="{{ asset('js/popup.js') }}" ></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+        {% block script %}{% endblock %}
     {% endblock %}
     </body>
+
 </html>

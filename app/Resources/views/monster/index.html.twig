@@ -1,17 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block navbar %}
-    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
-        <div class="container">
-            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Accueil</a>
-            <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
-        </div>
-    </nav>
-{% endblock %}
-
 {% block body %}
-<section>
-    <div class="container-fluid padding-top" >
+    <div class="container-fluid divmt" >
         <div class="row">
             <div class="col-lg-5">
             </div>
@@ -28,26 +18,22 @@
                 <table class="table">
                     <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Damages</th>
-                <th>Attackname</th>
-                <th>Health</th>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>Nom</th>
+                <th>Dégats</th>
+                <th>Attaque</th>
+                <th>Vitalité</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
         {% for monster in monsters %}
             <tr>
-                <td><a href="{{ path('monster_show', { 'id': monster.id }) }}">{{ monster.id }}</a></td>
+                <td>{{ monster.name }}</td>
                 <td>{{ monster.damages }}</td>
                 <td>{{ monster.attackName }}</td>
                 <td>{{ monster.health }}</td>
-                <td>{{ monster.name }}</td>
                 <td>
-                    <ul>
-                        <a class="btn btn-outline-danger btn-block" href="{{ path('monster_show', { 'id': monster.id }) }}">show</a>
-                    </ul>
+                        <a class="btn btn-outline-danger" href="{{ path('monster_show', { 'id': monster.id }) }}">Voir</a>
                 </td>
             </tr>
         {% endfor %}
@@ -57,5 +43,4 @@
             </div>
         </div>
     </div>
-</section>
 {% endblock %}

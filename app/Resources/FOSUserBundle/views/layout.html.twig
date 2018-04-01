@@ -1,6 +1,102 @@
-{% block title %}Demo Application {% endblock %}
-<body>
-{% block content %}
-    {% block fos_user_content %}{% endblock %}
+<title>{% block title %}Balrog{% endblock %}</title>
+
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon2.ico') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+
+{% block style %}
+    <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">
 {% endblock %}
-</body>
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv bg-dark">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Balrog</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse1">
+                <ul class="navbar-nav ml-auto">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ app.user.username|upper }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('hero_index') }}">Jouer au jeu</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('fos_user_security_login') }}" >Connexion</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('fos_user_registration_register') }}" >Inscription</a> </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
+    {% block body %}
+        {% block fos_user_content %}{% endblock %}
+    {% endblock %}
+
+{% block footer %}
+    <div class="container-fluid bg-dark">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <img src="{{ asset('img/balrog2.png') }}" alt="Balrog">
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
+                <ul class="menu">
+                    <span>Équipe</span>
+                    <li>
+                        <a href="{{ path('accueil') }}">Arthur JACQUEMIN</a>
+                    </li>
+
+                    <li>
+                        <a href="#!">Moussa ISKOUNENE</a>
+                    </li>
+
+                    <li>
+                        <a href="#!">Etienne GOUJON</a>
+                    </li>
+
+                    <li>
+                        <a href="#!">Mehdi ZAIDI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
+                <ul class="address">
+                    <span>Contact</span>
+                    <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">06 66 66 66 66</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Panthéon-Sorbonne</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">contact@balrog.fr</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-heart" aria-hidden="true"></i> <a href="#">Made with Heart</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
+<script type="text/javascript" src="{{ asset('js/connexion.js') }}" ></script>
+{% endblock %}
+

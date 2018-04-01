@@ -1,13 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-        {{ parent() }}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/hero.css') }}"/>
-{% endblock %}
 
 {% block body %}
-<section>
-<div class="container-fluid padding-top">
+
+<div class="container-fluid divmt">
 
     <div class="row">
         <div class="col-lg-4">
@@ -36,7 +32,7 @@
 
     </div>
 </div>
-</section>
+
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
