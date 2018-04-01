@@ -1,12 +1,11 @@
 <title>{% block title %}Balrog{% endblock %}</title>
+
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon2.ico') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
-<link rel="stylesheet" type="text/css" href="{{ asset('css/popup.css') }}"/>
 
 {% block style %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" href="css/connexion.css">
+    <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">
 {% endblock %}
 
 {% block navbar %}
