@@ -4,13 +4,13 @@
 {% block body %}
     <div class="swiper-container main-slider" id="Accueil">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel1.png')" data-hash="slide1">
+            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel1.jpg') }}')" data-hash="slide1">
                 <h2>Affrontez des monstres légendaires</h2>
             </div>
-            <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel2.png')" data-hash="slide2">
+            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel2.jpg') }}')" data-hash="slide2">
                 <h2>Partez à l'aventure en terre du milieu</h2>
             </div>
-            <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel3.png')" data-hash="slide3">
+            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel3.jpg') }}')" data-hash="slide3">
                 <h2>Obtenez de puissantes reliques</h2>
             </div>
         </div>
@@ -59,12 +59,12 @@
     </section>
     <!-- Card -->
 
-    <section id="Univers" class="bg-dark text-purple">
+    <section id="Univers" class="bg-dark text-white">
     <div class="container mb-0 ">
         <div class="row">
             <div class="col-md-8">
                 <h3 class="display-4 text-center">Univers</h3>
-                <hr align="center" class="bg-rose mb-4 w-25">
+                <hr align="center">
                 <p class="lead">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
                 </p>

@@ -88,6 +88,7 @@ section {
   color:#333;
 }
 
+
 .search-text .btn-search{
   background: #da3e44;
   font-family:Roboto;
@@ -317,12 +318,8 @@ section {
 
 /* ABOUT SECTION
 -------------------------------------------------- */
-.about-sec {
-  background: url('http://grafreez.com/wp-content/temp_demos/burnout/img/para-01.jpg') no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  position: relative;
-}
+
+
 .about-sec:before {
   content: ' ';
   position: absolute;

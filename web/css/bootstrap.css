@@ -4536,6 +4536,11 @@ tbody.collapse.show {
   border-radius: calc(0.25rem - 1px);
 }
 
+.card-img-monster {
+  width: 50%;
+  border-radius: calc(0.25rem - 1px);
+}
+
 .card-img-top {
   width: 100%;
   border-top-left-radius: calc(0.25rem - 1px);

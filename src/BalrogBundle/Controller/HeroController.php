@@ -55,7 +55,7 @@ class HeroController extends Controller
             $repository->InsertId($user,$hero->getId());
 
 
-            return $this->redirectToRoute('hero_show', array('id' => $hero->getId()));
+            return $this->redirectToRoute('hero_index', array('id' => $hero->getId()));
         }
 
         return $this->render('hero/new.html.twig', array(
