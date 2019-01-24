@@ -2,7 +2,31 @@
 
 
 {% block body %}
-    <div class="container-fluid divmt" >
+
+    <div class="container mb-5" style="margin-top: 80px;">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="card-img-top" src="{{ asset('img/equipement2.png') }}">
+            </div>
+            <div class="col-md-6 divmt">
+                <h1>Pas d'équipements ?</h1>
+                <p class="lead">
+                    Pour pouvoir équiper un nouvel équipement, il faut tout d'abord les gagner en combat.
+                </p>
+                <p>
+                    Vous pouvez équiper qu'une seul fois un même équipement (pas de doublons)
+                </p>
+                <p>
+                    <a style="color:red; font-weight: bold;">Liste :</a> Une liste des équipements est disponible en cliquant <a href="{{ path('equipment_index') }}" target="_blank" style="color:red;">ici</a>.
+                </p>
+                <a class="btn btn-outline-green" href="#!">Ajouter un équipement (work in progress)</a>
+                <a class="btn btn-outline-warning" href="{{ path('hero_index') }}">Retour</a>
+            </div>
+        </div>
+    </div>
+
+
+    {#<div class="container-fluid divmt" >
     <div class="row">
     <div class="col-lg-5">
     </div>
@@ -26,8 +50,10 @@
         </tr>
         </thead>
         <tbody>
+        {% set nb=0 %}
         {% for inventaire in inventaires %}
             {% if inventaire.getHero().id==hero.id %}
+                {% set nb=nb+1 %}
             <tr>
                 <td>{{ inventaire.getEquipment() }}</td>
                 <td>{% if inventaire.equiped %}Yes{% else %}No{% endif %}</td>
@@ -50,6 +76,6 @@
         </div>
 
     </div>
-    </div>
+    </div>#}
 
 {% endblock %}

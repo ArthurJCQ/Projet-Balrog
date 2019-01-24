@@ -9,16 +9,16 @@
 {% endblock %}
 
  {% block navbar %}
-    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv bg-dark">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Balrog</a>
-            <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
-        </div>
-    </nav>
-    {% endblock %}
+     <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv bg-dark">
+         <div class="container">
+             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Balrog</a>
+             <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
+         </div>
+     </nav>
+ {% endblock %}
 
     {% block body %}
         {% block fos_user_content %}{% endblock %}
@@ -82,7 +82,7 @@
 
 
 {% block script %}
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
-<script type="text/javascript" src="{{ asset('js/connexion.js') }}" ></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
+    <script type="text/javascript" src="{{ asset('js/connexion.js') }}" ></script>
 {% endblock %}
 

@@ -31,7 +31,7 @@ framework:
     assets: ~
     php_errors:
         log: true
-    
+
     translator: { fallbacks: [en] }
 
     templating:
@@ -115,4 +115,6 @@ fos_user:
     from_email:
         address: "balrog@balrog.fr"
         sender_name: "Balrog"
+
+
 

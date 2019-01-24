@@ -1,35 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container-fluid divmt">
-
+<div class="container divmt mb-5">
     <div class="row">
-        <div class="col-lg-4">
-        </div>
-        <div class="col-lg-4">
-            <h1>Hero creation</h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-4">
+        <div class="col-md-6">
+            <img class="card-img-top" src="{{ asset('img/createhero.png') }}">
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-6 divmt">
+            <h1>Création d'un Hero</h1>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             {% set user= app.user.username %}
-            <input class="btn btn-outline-danger" type="submit" value="Create" />
+            <input class="btn btn-outline-green" type="submit" value="Créer" />
+            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Retour</a>
             {{ form_end(form) }}
         </div>
 
-        <div class="col-lg-4">
-
-            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Back to the list</a>
-        </div>
 
     </div>
 </div>
 {% endblock %}
-
-{% block javascripts %}{% endblock %}

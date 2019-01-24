@@ -18,20 +18,18 @@
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Rareness</th>
-                            <th>Strength</th>
-                            <th>Agility</th>
+                            <th>Nom</th>
+                            <th>Rareté</th>
+                            <th>Force</th>
+                            <th>Agilité</th>
                             <th>Intelligence</th>
                             <th>Chance</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for equipment in equipment %}
                         <tr>
-                            <td><a href="{{ path('equipment_show', { 'id': equipment.id }) }}">{{ equipment.id }}</a></td>
                             <td>{{ equipment.name }}</td>
                             <td>{{ equipment.rareness }}</td>
                             <td>{{ equipment.strength }}</td>
@@ -39,9 +37,7 @@
                             <td>{{ equipment.intelligence }}</td>
                             <td>{{ equipment.chance }}</td>
                             <td>
-                                <ul>
-                                    <a class="btn btn-outline-danger btn-block" href="{{ path('equipment_show', { 'id': equipment.id }) }}">show</a>
-                                </ul>
+                                <a class="btn btn-outline-danger" href="{{ path('equipment_show', { 'id': equipment.id }) }}">Voir</a>
                             </td>
                         </tr>
                     {% endfor %}

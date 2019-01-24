@@ -1,7 +1,138 @@
 {% extends 'base.html.twig' %}
 
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv bg-dark">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Accueil</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse1">
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('hero_new') }}">Créer un personnage</a> </li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ app.user.username|upper }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('hero_index') }}">Jouer au jeu !</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('fos_user_security_login') }}" >Connexion</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('fos_user_registration_register') }}" >Inscription</a> </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock %}
+
+
 {% block body %}
-<div class="container-fluid divmt" >
+
+{% set nb=0 %}
+    {% for hero in heroes %}
+        {% if hero.user == app.user %}
+        {% set nb=nb+1 %}
+            <div class="divmt">
+            <div class="container">
+                <div class="row">
+
+                    <div class=" col-md-6 mb-3 mt-5">
+                        <img class="card-img-top" src="../../img/{{ hero.classe }}.jpg">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <h1 style="text-align: center;">{{ hero.name }}</h1>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Classe</th>
+                                <td>{{ hero.classe }}</td>
+                            </tr>
+                            <tr>
+                                <th>Niveau</th>
+                                <td>{{ hero.level }}</td>
+                            </tr>
+                            <tr>
+                                <th>Vitalité</th>
+                                <td>{{ hero.health }}</td>
+                            </tr>
+                            <tr>
+                                <th>Force</th>
+                                <td>{{ hero.strength }}</td>
+                            </tr>
+                            <tr>
+                                <th>Agilité</th>
+                                <td>{{ hero.agility }}</td>
+                            </tr>
+                            <tr>
+                                <th>Intelligence</th>
+                                <td>{{ hero.intelligence }}</td>
+                            </tr>
+                            <tr>
+                                <th>Chance</th>
+                                <td>{{ hero.chance }}</td>
+                            </tr>
+                            <tr>
+                                <th>Dégats</th>
+                                <td>{{ hero.damages }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a class="btn btn-outline-green" href="{{ path('level_index', { 'id': hero.id }) }}">Combattre</a>
+                        <a class="btn btn-outline-warning" href="{{ path('inventaire_index', { 'id': hero.id }) }}">Inventaire</a>
+                        <a class="btn btn-outline-primary" href="{{ path('hero_edit', { 'id': hero.id }) }}">Options</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if nb == 0 %}
+        <div class="container mb-5" style="margin-top: 80px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="{{ asset('img/notfound.png') }}">
+                </div>
+                <div class="col-md-6" style="margin-top:50px;">
+                    <h1>Pas de personnage ?</h1>
+                    <p class="lead">
+                        Pour pouvoir créer un nouvel hero, cliquez sur "Créer un personnage" en haut de votre écran.
+                    </p>
+                    <p>
+                        Vous aurez ensuite le choix entre quatre classes de personnages :
+                    </p>
+                    <p>
+                        <a href="{{ path('personnage') }}" target="_blank" style="color:red; font-weight: bold;">Voleur :</a> Spécialiste des fourberies en tout genre, les voleurs commencent avec un peu plus d'agilité que les gens ordinaires.
+                    </p>
+                    <p>
+                        <a href="{{ path('personnage') }}" target="_blank" style="color:blue; font-weight: bold;">Guerrier :</a> Amateur des grosses épées, ils sont redoutable au corps à corps. Leur force est supérieur à la moyenne.
+                    </p>
+                    <p>
+                        <a href="{{ path('personnage') }}" target="_blank" style="color:purple; font-weight: bold;">Mage :</a> Sorcier aux pouvoirs obscurs, les mages possèdent une intelligence redoutable.
+                    </p>
+                    <p>
+                        <a href="{{ path('personnage') }}" target="_blank" style="color:green; font-weight: bold;">Archer :</a> Sans scrupule, ils sont dotés d'une vision incomparable. Leur chance est décuplé lors des combats.
+                    </p>
+                    <p>
+                        Rassurez-vous. Vous pouvez cumulez plusieurs personnages sur votre compte de jeu. N'hésitez pas à tous les tester et à aller le plus loin possible !
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+
+{#<div class="container-fluid divmt" >
     <div class="row">
         <div class="col-lg-5">
         </div>
@@ -70,5 +201,4 @@
         </div>
 
     </div>
-</div>
-{% endblock %}
+</div>#}

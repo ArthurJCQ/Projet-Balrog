@@ -4,13 +4,13 @@
 {% block body %}
     <div class="swiper-container main-slider" id="Accueil">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel1.png')" data-hash="slide1">
+            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel1.jpg') }}')" data-hash="slide1">
                 <h2>Affrontez des monstres légendaires</h2>
             </div>
-            <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel2.png')" data-hash="slide2">
+            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel2.jpg') }}')" data-hash="slide2">
                 <h2>Partez à l'aventure en terre du milieu</h2>
             </div>
-            <div class="swiper-slide slider-bg-position" style="background:url('http://79.137.84.144/~gollum/img/carousel3.png')" data-hash="slide3">
+            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel3.jpg') }}')" data-hash="slide3">
                 <h2>Obtenez de puissantes reliques</h2>
             </div>
         </div>
@@ -21,7 +21,7 @@
 
     <section id="Encyclopedie" class="bg-white">
     <div class="container container mt-0 mb-0">
-        <h3 class="display-4 text-center"> Encyclopédie </h3>
+        <h3 class="display-4 text-center">Encyclopédie </h3>
         <hr class="bg-dark mb-4 w-25">
         <div class="row">
             <div class="col-md-4">
@@ -59,23 +59,27 @@
     </section>
     <!-- Card -->
 
-    <section id="Univers" class="bg-dark text-purple">
-    <div class="container mb-0 ">
+    <section id="Univers" class="bg-dark text-white">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-8">
-                <h3 class="display-4 text-center">Univers</h3>
-                <hr align="center" class="bg-rose mb-4 w-25">
+                <h3 class="display-4 text-center">Concept</h3>
+                <hr align="center">
                 <p class="lead">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    "BALROG" est un jeu web développé par une équipe d'étudiants au cours d'un projet web en Symfony. (Année de production : 2018)
                 </p>
                 <p>
-                    When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Le jeu se joue en solo, vous devez affronter des ennemis au sein d'un environnement en 2D et les battre jusqu'a arrivé au boss. Pour avoir une meilleur force d'attaque, une meilleur défense ainsi qu'une meilleur vitalité, vous pouvez améliorer vos caractéristiques de différentes façons :
                 </p>
                 <ul class="list-unstyled pl-4">
-                    <li><i class="fa fa-check"></i> Lorem Ipsum is simply dummy text</li>
-                    <li><i class="fa fa-check"></i> Lorem Ipsum is simply dummy text</li>
-                    <li><i class="fa fa-check"></i> Lorem Ipsum is simply dummy text</li>
+                    <li>- Gagner des niveaux</li>
+                    <li>- Obtenir des équipements et les utiliser</li>
+                    <li>- Finir le jeu au moins une fois</li>
                 </ul>
+
+                <p>
+                    Pour commencer à jouer, rien de plus simple ! Inscrivez-vous en suivant les étapes indiqués, si vous êtes déjà inscrit, n'hésitez pas à vous connecter ! :)
+                </p>
             </div>
             <div class="col-md-4 mt-5">
                 <img class="card-img-top" src="{{ asset('img/loup.png') }}" alt="Card image cap">
@@ -108,7 +112,7 @@
                     <!--Title-->
                     <h4 class="card-title">Préparez-vous pour le nouveau système de guerres</h4>
                     <!--Text-->
-                    <p class="card-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores est quas molestias excepturi sint occaecati cupiditate non provident similique.</p>
+                    <p class="card-text">Ceci est un test d'article. Un nouveau système de guerre ??? Essayez déjà de terminer le jeu, allez hop hop hop ! Le balrog vous attends et il est plutôt costaud, alors bonne chance les aventuriers..</p>
                     <a href="#!" class="btn btn-outline-danger waves-effect">Lire la suite..</a>
                 </div>
 
@@ -137,7 +141,7 @@
                     <!--Title-->
                     <h4 class="card-title">Ouverture du donjon de Naheulbeuk</h4>
                     <!--Text-->
-                    <p class="card-text">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime.</p>
+                    <p class="card-text">Ceci est un test d'article. Il n'existe pas encore de donjon de Naheulbeuk et même si c'était le cas, vous ne pourriez pas y accéder, mouhaha.</p>
                     <a href="#!" class="btn btn-outline-danger waves-effect">Lire la suite..</a>
                 </div>
 
@@ -146,6 +150,60 @@
 
         </div>
         <!-- Grid column -->
+        </div>
+    </div>
+    </section>
+
+    <!-- Footer -->
+    <section>
+    <div class="container-fluid bg-dark">
+        <div class="row">
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <img src="{{ asset('img/balrog-footer.png') }}" alt="Balrog">
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
+                <ul class="menu">
+                    <span>Équipe</span>
+                    <li>
+                        <a href="{{ path('accueil') }}">Arthur JACQUEMIN</a>
+                    </li>
+
+                    <li>
+                        <a href="#!">Moussa ISKOUNENE</a>
+                    </li>
+
+                    <li>
+                        <a href="#!">Etienne GOUJON</a>
+                    </li>
+
+                    <li>
+                        <a href="#!">Mehdi ZAIDI</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
+                <ul class="address">
+                    <span>Contact</span>
+                    <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">06 66 66 66 66</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Panthéon-Sorbonne</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">contact@balrog.fr</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-heart" aria-hidden="true"></i> <a href="#">Made with Heart</a>
+                    </li>
+
+                </ul>
+            </div>
+
         </div>
     </div>
     </section>

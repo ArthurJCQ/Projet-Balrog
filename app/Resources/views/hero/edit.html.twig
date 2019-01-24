@@ -1,26 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container-fluid divmt">
+<div class="container mb-5 divmt">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-md-6">
+            <img class="card-img-top" src="../../img/{{ hero.classe }}.jpg">
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-6 divmt">
             {% if hero.user == app.user %}
-            <h1>Hero edit</h1>
+            <h1>{{ hero.classe }} - {{ hero.name }}</h1>
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
             <div class="row">
-                <div class="col-sm">
-                    <input class="btn btn-outline-danger" type="submit" value="Edit" />
-                    {{ form_end(edit_form) }}
-                </div>
-                <div class="col-sm">
-                    {{ form_start(delete_form) }}
-                    <input class="btn btn-outline-danger" type="submit" value="Delete">
-                    {{ form_end(delete_form) }}
-                </div>
+                <input class="btn btn-outline-green" type="submit" value="Modifier nom" />
+                {{ form_end(edit_form) }}
+                {{ form_start(delete_form) }}
+                <input class="btn btn-outline-warning" type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+                <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Retour</a>
             </div>
             {% endif %}
             {% if hero.user != app.user %}
@@ -30,10 +28,7 @@
             {% endif %}
         </div>
 
-        <div class="col-lg-4">
-            <br>
-            <a class="btn btn-outline-primary" href="{{ path('hero_index') }}">Back to the list</a>
-        </div>
+
     </div>
 </div>
 {% endblock %}
