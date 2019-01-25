@@ -1,8 +1,4 @@
-<title>{% block title %}Balrog{% endblock %}</title>
-
-<link rel="icon" type="image/x-icon" href="{{ asset('favicon2.ico') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
-<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+{% extends 'base.html.twig' %}
 
 {% block style %}
     <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">
@@ -14,8 +10,7 @@
              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
              </button>
-             <a class="navbar-brand mx-auto" href="{{ path('accueil') }}">Balrog</a>
-             <div class="collapse navbar-collapse" id="navbarCollapse1"></div>
+             <a class="navbar-brand title-balrog mx-auto" href="{{ path('accueil') }}"><i class="fas fa-home"></i>Page d'accueil</a>
          </div>
      </nav>
  {% endblock %}
@@ -25,59 +20,7 @@
     {% endblock %}
 
 {% block footer %}
-    <div class="container-fluid bg-dark">
-        <div class="row">
-
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <img src="{{ asset('img/balrog-footer.png') }}" alt="Balrog">
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
-                <ul class="menu">
-                    <span>Équipe</span>
-                    <li>
-                        <a href="{{ path('accueil') }}">Arthur JACQUEMIN</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Moussa ISKOUNENE</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Etienne GOUJON</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Mehdi ZAIDI</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Asel SAUSSEREAU</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
-                <ul class="address">
-                    <span>Contact</span>
-                    <li>
-                        <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">06 66 66 66 66</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Panthéon-Sorbonne</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">contact@balrog.fr</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-heart" aria-hidden="true"></i> <a href="#">Made with Heart</a>
-                    </li>
-
-                </ul>
-            </div>
-
-        </div>
-    </div>
+    {{ parent() }}
 {% endblock %}
 
 

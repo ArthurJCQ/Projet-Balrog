@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}Balrog{% endblock %}</title>
-            <link rel="icon" type="image/x-icon" href="{{ asset('favicon2.ico') }}" />
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}"/>
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+        <title>{% block title %}Jeu de rôle en ligne - Balrog{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
         {% block style %}{% endblock %}
     </head>
     <body>
@@ -18,7 +19,7 @@
             <nav class="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv bg-dark">
                 {% endif %}
             <div class="container">
-                <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarCollapse1">
                     <span style="color:#da3e44;" class="fas fa-bars"></span>
                 </button>
                 {% if app.request.get('_route') == 'accueil' %}
@@ -29,10 +30,10 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse1">
                     <ul class="navbar-nav ml-auto">
                         {% if app.request.get('_route') == 'accueil' %}
-                        <li class="nav-item active"> <a class="nav-link" href="{{ path('accueil') }}">Accueil <span class="sr-only">(current)</span></a> </li>
+                        <li class="nav-item active"> <a class="nav-link" href="#Accueil">Accueil <span class="sr-only">(current)</span></a> </li>
                         <li class="nav-item"> <a class="nav-link" href="#Encyclopedie">Encyclopédie</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="#Univers">Univers</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="#Actualites">Actualités</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#Concept">Concept</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#Equipe">Equipe</a> </li>
                         {% endif %}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <li class="nav-item dropdown">
@@ -57,10 +58,130 @@
 
     {% block body %}{% endblock %}
 
-    {% block sign %}{% endblock %}
+    {% block footer %}
+        <!-- Footer -->
+        <section>
+            <!-- Footer -->
+            <footer class="page-footer font-small bg-dark">
+
+                <!-- Footer Links -->
+                <div class="container">
+
+                    {% if app.request.get('_route') == 'accueil' %}
+                    <!-- Grid row-->
+                    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#Accueil">Accueil</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#Encyclopedie">Encyclopédie</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#Concept">Concept</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#Equipe">Équipe</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#!">Contact</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <div class="col-md-2 mb-3">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                </h6>
+                            </div>
+                        {% else %}
+                            <div class="col-md-2 mb-3">
+                                <h6 class="text-uppercase font-weight-bold">
+                                    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                                </h6>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                    <!-- Grid row-->
+                    <hr class="rgba-white-light" style="margin: 0 5%;">
+
+                    {% endif %}
+
+                    <!-- Grid column -->
+                    <div class="col-md-12">
+
+                        <div class="flex-center mt-2">
+
+                            <!-- Balrog Img -->
+                            <img class="balrog-img" src="{{ asset('img/balrog-footer.png') }}" alt="Balrog">
+
+                        </div>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid row-->
+                    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+                        <!-- Grid column -->
+                        <div class="col-md-10 col-12 mt-2">
+                            <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row-->
+                    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+                    <!-- Grid row-->
+                    <div class="row pb-3">
+
+
+                    </div>
+                    <!-- Grid row-->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center">Licence 3 MIAGE - 2017-2018 ©
+                    <a href="https://www.pantheonsorbonne.fr/" target="_blank">Paris 1 Panthéon-Sorbonne</a>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+        </section>
+    {% endblock %}
+
 
     {% block javascripts %}
-
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

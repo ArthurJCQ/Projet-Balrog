@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $name = "Character";
+    protected $name = "";
 
     /**
      * @ORM\ManyToOne(targetEntity="Round")
@@ -79,9 +79,4 @@ use Doctrine\ORM\Mapping as ORM;
 
         return $this;
     }
-
-    /*public function __toString()
-    {
-        return $this->name;
-    }*/
 }

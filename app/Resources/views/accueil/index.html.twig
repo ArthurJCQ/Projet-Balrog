@@ -2,69 +2,67 @@
 
 
 {% block body %}
-    <div class="swiper-container main-slider" id="Accueil">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel1.jpg') }}')" data-hash="slide1">
-                <h2>Affrontez des monstres légendaires</h2>
+        <div class="swiper-container main-slider" id="Accueil">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel1-min.jpg') }}')" data-hash="slide1">
+                    <h2>Affrontez des monstres légendaires</h2>
+                </div>
+                <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel2-min.jpg') }}')" data-hash="slide2">
+                    <h2>Partez à l'aventure en terre du milieu</h2>
+                </div>
+                <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel3-min.jpg') }}')" data-hash="slide3">
+                    <h2>Obtenez de puissantes reliques</h2>
+                </div>
             </div>
-            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel2.jpg') }}')" data-hash="slide2">
-                <h2>Partez à l'aventure en terre du milieu</h2>
-            </div>
-            <div class="swiper-slide slider-bg-position" style="background:url('{{ asset('img/carousel3.jpg') }}')" data-hash="slide3">
-                <h2>Obtenez de puissantes reliques</h2>
-            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+            <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
-        <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
-    </div>
 
     <section id="Encyclopedie" class="bg-white">
-    <div class="container container mt-0 mb-0">
-        <h3 class="display-4 text-center">Encyclopédie </h3>
-        <hr class="bg-dark mb-4 w-25">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{ asset('img/personnage.png') }}" alt="Personnage">
-                    <div class="card-block p-3 text-center">
-                        <h4 class="card-title ">Personnages</h4>
-                        <p class="card-text">Vous avez accès à 4 classes différentes. Chacunes des classes ayant des compétences uniques et une arme.</p>
-                        <a href="{{ path('personnage') }}" class="btn btn-rose rounded-0 mb-2">Listes des personnages</a>
+        <div class="container container mt-0 mb-0">
+            <h3 class="display-4 text-center mb-5">Encyclopédie</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ asset('img/personnage.png') }}" alt="Personnage">
+                        <div class="card-block p-3 text-center">
+                            <h4 class="card-title ">Personnages</h4>
+                            <p class="card-text">Vous avez accès à 4 classes différentes. Chacunes des classes ayant des compétences uniques et une arme.</p>
+                            <a href="{{ path('personnage') }}" class="btn btn-rose rounded-0 mb-2">Listes des personnages</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{ asset('img/monstre.png') }}" alt="Monstre">
-                    <div class="card-block p-3 text-center">
-                        <h4 class="card-title">Monstres</h4>
-                        <p class="card-text">Fait progresser ton personnage en affrontant des monstres venu de différents horizons. Attention au Balrog. :)</p>
-                        <a href="{{ path('monster_index') }}" class="btn btn-rose rounded-0 mb-2">Encyclopédie des monstres</a>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ asset('img/monstre.png') }}" alt="Monstre">
+                        <div class="card-block p-3 text-center">
+                            <h4 class="card-title">Monstres</h4>
+                            <p class="card-text">Fait progresser ton personnage en affrontant des monstres venu de différents horizons. Attention au Balrog. :)</p>
+                            <a href="{{ path('monster_index') }}" class="btn btn-rose rounded-0 mb-2">Encyclopédie des monstres</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{ asset('img/equipement.png') }}" alt="Equipement">
-                    <div class="card-block p-3 text-center" >
-                        <h4 class="card-title">Équipements</h4>
-                        <p class="card-text">Les monstres possèdent des reliques uniques. Combattez en beaucoup afin d'obtenir les équipements les plus rares.</p>
-                        <a href="{{ path('equipment_index') }}" class="btn btn-rose rounded-0 mb-2">Équipements et trésors</a>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ asset('img/equipement.png') }}" alt="Equipement">
+                        <div class="card-block p-3 text-center" >
+                            <h4 class="card-title">Équipements</h4>
+                            <p class="card-text">Les monstres possèdent des reliques uniques. Combattez en beaucoup afin d'obtenir les équipements les plus rares.</p>
+                            <a href="{{ path('equipment_index') }}" class="btn btn-rose rounded-0 mb-2">Équipements et trésors</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
     <!-- Card -->
 
-    <section id="Univers" class="bg-dark text-white">
+    <section id="Concept" class="bg-dark text-white">
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-8">
                 <h3 class="display-4 text-center">Concept</h3>
-                <hr align="center">
                 <p class="lead">
                     "BALROG" est un jeu web développé par une équipe d'étudiants au cours d'un projet web en Symfony. (Année de production : 2018)
                 </p>
@@ -82,15 +80,14 @@
                 </p>
             </div>
             <div class="col-md-4 mt-5">
-                <img class="card-img-top" src="{{ asset('img/loup.png') }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('img/loup.png') }}" alt="Créer son personnage">
             </div>
         </div>
     </div>
 </section>
 
-    <section id="Actualites" class="bg-white">
-        <h3 class="display-4 text-center"> Actualités </h3>
-        <hr class="bg-dark mb-4 w-25">
+    <section id="Equipe" class="bg-white">
+        <h3 class="display-4 text-center mb-5">Équipe de développement</h3>
         <!-- Grid column -->
     <div class="container-fluid mt-0 mb-0">
         <div class="row">
@@ -153,109 +150,8 @@
         </div>
     </div>
     </section>
-
-    <!-- Footer -->
-    <section>
-    <div class="container-fluid bg-dark">
-        <div class="row">
-
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <img src="{{ asset('img/balrog-footer.png') }}" alt="Balrog">
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
-                <ul class="menu">
-                    <span>Équipe</span>
-                    <li>
-                        <a href="{{ path('accueil') }}">Arthur JACQUEMIN</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Moussa ISKOUNENE</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Etienne GOUJON</a>
-                    </li>
-
-                    <li>
-                        <a href="#!">Mehdi ZAIDI</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12 mt-3">
-                <ul class="address">
-                    <span>Contact</span>
-                    <li>
-                        <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">06 66 66 66 66</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Panthéon-Sorbonne</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">contact@balrog.fr</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-heart" aria-hidden="true"></i> <a href="#">Made with Heart</a>
-                    </li>
-
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    </section>
 {% endblock %}
 
-{% block sign %}
-        <!-- BEGIN # MODAL sign -->
-        <div class="modal fade" id="sign-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div  align="center">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </button>
-                    </div>
-
-
-                    <!-- Begin # DIV Form -->
-
-                    <div class="card ripe-malinka-gradient form-white">
-                        <div class="card-body">
-                            <!-- Form register -->
-                            <form>
-                                <h2 class="text-center font-up font-bold py-4 white-text">Inscription</h2>
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix white-text"></i>
-                                    <input type="text" id="orangeForm-name2" class="form-control">
-                                    <label for="orangeForm-name2">Pseudo</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix white-text"></i>
-                                    <input type="text" id="orangeForm-email2" class="form-control">
-                                    <label for="orangeForm-email2">@Mail</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-lock prefix white-text"></i>
-                                    <input type="password" id="orangeForm-pass2" class="form-control">
-                                    <label for="orangeForm-pass2">Mot de passe</label>
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-outline-white waves-effect waves-light">S'inscrire</button>
-                                </div>
-                            </form>
-                            <!-- Form register -->
-                        </div>
-                    </div>
-
-                </div>
-                <!-- End # DIV Form -->
-
-            </div>
-        </div>
-        </div>
-        <!-- END # MODAL LOGIN -->
+{% block footer %}
+    {{ parent() }}
 {% endblock %}

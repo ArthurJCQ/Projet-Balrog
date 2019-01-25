@@ -107,6 +107,11 @@ section {
   margin-top: 100px;
 }
 
+.form-content {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
 .logo{
   color:#FFF;
   font-weight:700;
@@ -148,6 +153,10 @@ section {
   color: #da3e44;
   margin-right: 10px;
   font-size:18px;
+}
+
+.balrog-img {
+  height: 200px;
 }
 
 /* TOP HEADER
